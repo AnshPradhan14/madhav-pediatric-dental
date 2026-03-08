@@ -1,0 +1,14 @@
+{
+    "mcpServers": {
+        "stitch": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@_davideast/stitch-mcp"
+            ],
+            "env": {
+                "GOOGLE_PROJECT_ID": "AQ.Ab8RN6Jb-hIIMH8RoirdbmfzDUEhzdSKTBSqow--pSWCfd7X7g"
+            }
+        }
+    }
+}

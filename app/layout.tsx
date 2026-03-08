@@ -9,8 +9,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Madhav Pediatric Dental Care",
-  description: "Pediatric dentist clinic in Ahmedabad specializing in children's dental care.",
+  title: "Madhav Pediatric Dental Care | Best Pediatric Dentist in Nikol, Ahmedabad",
+  description: "Expert pediatric dental care and dental implants in Nikol, Ahmedabad. Led by experienced MDS specialists, we provide compassionate and advanced dental treatments for children and adults.",
+  keywords: ["pediatric dentist Nikol", "dental clinic Ahmedabad", "dental implants Nikol", "child dentist Ahmedabad", "Madhav Dental Care", "MDS dentists Ahmedabad"],
 };
 
 export default function RootLayout({
