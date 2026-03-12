@@ -39,4 +39,20 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# MCP / Secrets
 mcp-config.json
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+backend/__pycache__/
+
+# Database
+backend/clinic.db
+
+# Uploads
+backend/public/uploads/*
+!backend/public/uploads/.gitkeep
