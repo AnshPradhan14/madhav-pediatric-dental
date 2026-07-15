@@ -3,6 +3,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlmodel import Session, select
 import os
 from dotenv import load_dotenv
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
+from limiter import limiter
 
 load_dotenv()
 
@@ -21,6 +25,11 @@ from fastapi.staticfiles import StaticFiles
 from routers.upload import router as upload_router
 
 app = FastAPI(title="Madhav Pediatric Dental Care API", version="1.0.0")
+
+# Rate Limiting
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
 
 # Mount public directory for uploads
 os.makedirs("public/uploads", exist_ok=True)
@@ -49,15 +58,22 @@ app.include_router(upload_router)
 @app.on_event("startup")
 def on_startup():
     create_db_and_tables()
+    
+    # Secure Default Credentials Logic
+    env = os.getenv("ENVIRONMENT", "development").lower()
     admin_email = os.getenv("ADMIN_EMAIL", "admin@madhavdental.com")
     admin_password = os.getenv("ADMIN_PASSWORD", "admin123")
+    
     with Session(engine) as session:
         existing = session.exec(select(AdminUser).where(AdminUser.email == admin_email)).first()
         if not existing:
-            admin = AdminUser(email=admin_email, hashed_password=hash_password(admin_password))
-            session.add(admin)
-            session.commit()
-            print(f"✅ Default admin created: {admin_email}")
+            if env == "production":
+                print(f"⚠️ [WARNING] Production environment detected. Skipping creation of default admin account for {admin_email}. Please seed an admin manually.")
+            else:
+                admin = AdminUser(email=admin_email, hashed_password=hash_password(admin_password))
+                session.add(admin)
+                session.commit()
+                print(f"✅ Default admin created: {admin_email} (DEVELOPMENT MODE ONLY)")
 
 
 @app.get("/")

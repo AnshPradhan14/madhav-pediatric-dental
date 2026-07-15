@@ -14,7 +14,9 @@
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "tailwind-merge": "^3.5.0"
+    "stitch-mcp-server": "^1.0.3",
+    "tailwind-merge": "^3.5.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -25,5 +27,21 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "description": "A premium, full-stack web application for **Madhav Pediatric Dental Care & Implant Center**, Nikol, Ahmedabad.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnshPradhan14/madhav-pediatric-dental.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnshPradhan14/madhav-pediatric-dental/issues"
+  },
+  "homepage": "https://github.com/AnshPradhan14/madhav-pediatric-dental#readme"
 }

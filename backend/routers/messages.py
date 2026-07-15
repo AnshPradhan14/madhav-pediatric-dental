@@ -4,12 +4,15 @@ from database import get_session
 from models.message import ContactMessage, ContactMessageCreate
 from auth.utils import verify_token
 from typing import List
+from fastapi import Request
+from limiter import limiter
 
 router = APIRouter(tags=["messages"])
 
 
 @router.post("/api/contact", response_model=ContactMessage)
-def submit_contact(message: ContactMessageCreate, session: Session = Depends(get_session)):
+@limiter.limit("5/minute")
+def submit_contact(request: Request, message: ContactMessageCreate, session: Session = Depends(get_session)):
     db = ContactMessage.model_validate(message)
     session.add(db)
     session.commit()

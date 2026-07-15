@@ -1,117 +1,174 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 const testimonials = [
-    {
-        id: 1,
-        content: "The best pediatric dentist in Nikol. My daughter was scared, but Dr. Poonam made her feel so comfortable. Highly recommended!",
-        author: "Rahul Sharma",
-        role: "Parent",
-        rating: 5,
-    },
-    {
-        id: 2,
-        content: "Got my dental implants done by Dr. Jatin. The process was smooth and painless. Exceptional professionalism.",
-        author: "Anjali Mehta",
-        role: "Patient",
-        rating: 5,
-    },
-    {
-        id: 3,
-        content: "Modern clinic with very friendly staff. They explained every treatment detail clearly. Nikol's best dental care.",
-        author: "Vikram Shah",
-        role: "Patient",
-        rating: 5,
-    },
+  {
+    id: 1,
+    content: "An entirely different class of dental care. The clinic feels like a premium lounge, and the precision of their work is unmatched. Completely anxiety-free experience.",
+    author: "Rahul Sharma",
+    role: "Implant Patient",
+    treatment: "Dental Implants",
+    rating: 5,
+  },
+  {
+    id: 2,
+    content: "Got my digital smile design done here. The 3D scanning technology and painless laser procedures exceeded my expectations. Truly world-class.",
+    author: "Anjali Mehta",
+    role: "Cosmetic Patient",
+    treatment: "Smile Design",
+    rating: 5,
+  },
+  {
+    id: 3,
+    content: "Ultra-modern facility with an incredibly professional team. Every detail from diagnostics to post-op care is managed flawlessly. Nikol's premier clinic.",
+    author: "Vikram Shah",
+    role: "Maxillofacial Patient",
+    treatment: "Maxillofacial Surgery",
+    rating: 5,
+  },
+  {
+    id: 4,
+    content: "My children actually look forward to their dental visits now! The team is incredibly gentle and the colorful, tech-forward environment puts kids at ease instantly.",
+    author: "Priya Patel",
+    role: "Parent",
+    treatment: "Pediatric Care",
+    rating: 5,
+  },
+  {
+    id: 5,
+    content: "From the CBCT scan to the final crown placement — everything happened in a single day. Unbelievable efficiency without compromising on quality.",
+    author: "Amit Desai",
+    role: "Crown Patient",
+    treatment: "CAD/CAM Crowns",
+    rating: 5,
+  },
 ];
 
 export default function TestimonialSlider() {
-    const [index, setIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval>>(null);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setIndex((prev) => (prev + 1) % testimonials.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, []);
+  const scrollNext = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = 400;
+    const maxScroll = el.scrollWidth - el.clientWidth;
+    if (el.scrollLeft >= maxScroll - 20) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: cardWidth, behavior: "smooth" });
+    }
+  }, []);
 
-    return (
-        <section className="py-24 bg-white overflow-hidden">
-            <div className="mx-auto max-w-7xl px-6">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-16 text-center text-3xl font-extrabold sm:text-4xl"
-                >
-                    What Our Patients Say
-                </motion.h2>
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(scrollNext, 5000);
+    }
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [isPaused, scrollNext]);
 
-                <div className="relative mx-auto max-w-4xl">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -50 }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
-                            className="rounded-3xl bg-primary/5 p-8 md:p-12 border border-primary/10 relative"
-                        >
-                            <div className="mb-6 flex justify-center gap-1 text-yellow-400">
-                                {[...Array(testimonials[index].rating)].map((_, i) => (
-                                    <span key={i} className="material-symbols-outlined fill-1">star</span>
-                                ))}
-                            </div>
-                            <p className="mb-8 text-center text-xl md:text-2xl italic text-slate-700 leading-relaxed font-medium">
-                                "{testimonials[index].content}"
-                            </p>
-                            <div className="flex flex-col items-center">
-                                <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                                    <span className="material-symbols-outlined text-primary text-3xl font-light">person</span>
-                                </div>
-                                <div className="text-center">
-                                    <p className="font-bold text-lg text-slate-900">{testimonials[index].author}</p>
-                                    <p className="text-sm text-slate-500 font-semibold uppercase tracking-wider">{testimonials[index].role}</p>
-                                </div>
-                            </div>
+  const scrollPrev = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: -400, behavior: "smooth" });
+  };
 
-                            {/* Decorative Quote Icon */}
-                            <div className="absolute top-10 left-10 text-primary/10 opacity-50">
-                                <span className="material-symbols-outlined text-7xl font-light">format_quote</span>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
+  return (
+    /* Alternate background: deep soft navy with a warm inner glow */
+    <section className="py-24 sm:py-28 relative overflow-hidden z-10 bg-[#0d1726]">
+      {/* Subtle top & bottom dividers */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(197,160,89,0.2)] to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[rgba(197,160,89,0.2)] to-transparent" />
+      
+      {/* Warm trust-building glow instead of a solid brown background */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.06)_0%,transparent_70%)] pointer-events-none blur-[60px]" />
 
-                    {/* Dots */}
-                    <div className="mt-8 flex justify-center gap-2">
-                        {testimonials.map((_, i) => (
-                            <button
-                                key={i}
-                                onClick={() => setIndex(i)}
-                                className={`h-2.5 rounded-full transition-all duration-300 ${index === i ? "w-8 bg-primary" : "w-2.5 bg-primary/20 hover:bg-primary/40"
-                                    }`}
-                                aria-label={`Go to testimonial ${i + 1}`}
-                            />
-                        ))}
-                    </div>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10 w-full">
+        <SectionHeader
+          badge="Patient Experiences"
+          badgeIcon="verified_user"
+          title="Words From"
+          gradientText="Our Patients"
+          subtitle="Hear from our community about their experience at Madhav Dental."
+        />
 
-                    {/* Navigation Buttons */}
-                    <button
-                        onClick={() => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg border border-slate-100 text-slate-400 hover:text-primary transition-colors"
-                    >
-                        <span className="material-symbols-outlined">chevron_left</span>
-                    </button>
-                    <button
-                        onClick={() => setIndex((prev) => (prev + 1) % testimonials.length)}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full hidden lg:flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg border border-slate-100 text-slate-400 hover:text-primary transition-colors"
-                    >
-                        <span className="material-symbols-outlined">chevron_right</span>
-                    </button>
+        <div className="relative">
+          {/* Edge fade masks — fixes the cut-off card slivers */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-4 w-12 sm:w-20 z-10 bg-gradient-to-r from-[#0d1726] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-4 w-12 sm:w-20 z-10 bg-gradient-to-l from-[#0d1726] to-transparent" />
+
+          {/* Scroll Container */}
+          <div
+            ref={scrollRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4"
+          >
+            {testimonials.map((t) => (
+              <motion.div
+                key={t.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group min-w-[300px] sm:min-w-[360px] max-w-[360px] snap-start flex flex-col
+                  rounded-3xl p-7 sm:p-8
+                  bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)]
+                  shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+                  hover:-translate-y-1 hover:border-[rgba(255,255,255,0.16)] hover:bg-[rgba(255,255,255,0.07)]
+                  hover:shadow-[0_12px_32px_rgba(0,0,0,0.4)]
+                  transition-all duration-500 cursor-default"
+              >
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <span key={i} className="material-symbols-outlined text-secondary text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                  ))}
                 </div>
-            </div>
-        </section>
-    );
+
+                {/* Quote */}
+                <p className="text-[15px] text-[#d6e3ff] font-light leading-relaxed tracking-wide mb-6 flex-1">
+                  &ldquo;{t.content}&rdquo;
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-3 pt-5 border-t border-[rgba(255,255,255,0.08)]">
+                  <div className="h-10 w-10 shrink-0 rounded-full bg-[rgba(26,54,93,0.8)] border border-secondary/30 flex items-center justify-center">
+                    <span className="material-symbols-outlined text-secondary/70 text-[20px] font-light">person</span>
+                  </div>
+                  <div>
+                    <p className="font-bold text-white text-sm font-display">{t.author}</p>
+                    <p className="text-[10px] text-[#86a0cd] font-semibold uppercase tracking-[0.15em] mt-0.5">{t.role} · {t.treatment}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Navigation */}
+          <div className="flex justify-center gap-3 mt-8">
+            <button
+              onClick={scrollPrev}
+              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-[0_0_16px_rgba(100,255,218,0.2)] transition-all duration-300"
+              aria-label="Previous testimonial"
+            >
+              <span className="material-symbols-outlined text-[20px] font-light">west</span>
+            </button>
+            <button
+              onClick={scrollNext}
+              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-[0_0_16px_rgba(100,255,218,0.2)] transition-all duration-300"
+              aria-label="Next testimonial"
+            >
+              <span className="material-symbols-outlined text-[20px] font-light">east</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AppointmentStrip from "@/components/AppointmentStrip";
 
 export default function PublicShell({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
@@ -19,6 +20,7 @@ export default function PublicShell({ children }: { children: React.ReactNode })
             <main className="flex-1">{children}</main>
             <Footer />
             <WhatsAppButton />
+            <AppointmentStrip />
         </div>
     );
 }

@@ -1,15 +1,17 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
 from sqlmodel import Session, select
 from database import get_session
 from models.appointment import Appointment, AppointmentCreate, AppointmentStatusUpdate
 from auth.utils import verify_token
 from typing import List
+from limiter import limiter
 
 router = APIRouter(prefix="/api/appointments", tags=["appointments"])
 
 
 @router.post("", response_model=Appointment)
-def create_appointment(appointment: AppointmentCreate, session: Session = Depends(get_session)):
+@limiter.limit("5/minute")
+def create_appointment(request: Request, appointment: AppointmentCreate, session: Session = Depends(get_session)):
     db = Appointment.model_validate(appointment)
     session.add(db)
     session.commit()

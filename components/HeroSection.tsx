@@ -1,82 +1,139 @@
 "use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useCallback } from "react";
+import { motion, Variants } from "framer-motion";
+import Link from "next/link";
+
+// Removed ParticleCanvas in favor of real clinical photography
+
+const staggerContainer: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
+  },
+};
 
 export default function HeroSection() {
-    return (
-        <section className="mx-auto max-w-7xl px-6 py-12 lg:py-24">
-            <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="flex flex-col gap-8"
-                >
-                    <div className="inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary border border-primary/20">
-                        <span className="material-symbols-outlined text-sm font-bold">verified</span>
-                        Top Rated Dental Care in Nikol
-                    </div>
-                    <h1 className="text-4xl font-black leading-[1.1] tracking-tight text-slate-900 sm:text-5xl lg:text-7xl">
-                        Expert <span className="text-primary italic">Pediatric</span> & Dental Implant Care
-                    </h1>
-                    <p className="max-w-xl text-lg leading-relaxed text-slate-600">
-                        Specialized dental treatments for children and adults by experienced MDS doctors. We provide compassionate care with cutting-edge technology.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                        <Link href="/contact" className="flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-8 text-base font-bold text-white shadow-xl shadow-primary/30 hover:bg-primary/90 transition-all hover:scale-[1.02] active:scale-95">
-                            <span className="material-symbols-outlined">calendar_month</span>
-                            Book Appointment
-                        </Link>
-                        <a href="tel:+918872300851" className="flex h-14 items-center justify-center gap-2 rounded-2xl border-2 border-slate-200 bg-white px-8 text-base font-bold text-slate-700 hover:border-primary/30 hover:text-primary transition-all active:scale-95">
-                            <span className="material-symbols-outlined text-xl">call</span>
-                            Call Now
-                        </a>
-                    </div>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
-                        <div className="flex -space-x-3">
-                            {[1, 2, 3].map((i) => (
-                                <div key={i} className={`h-10 w-10 rounded-full border-2 border-white bg-slate-${i + 1}00`} />
-                            ))}
-                            <div className="h-10 w-10 rounded-full border-2 border-white bg-primary flex items-center justify-center text-[10px] text-white font-bold">+2k</div>
-                        </div>
-                        <span className="font-medium">Trusted by 2,000+ Happy Families</span>
-                    </div>
-                </motion.div>
+  const trustItems = [
+    "2000+ Smiles Transformed",
+    "15 Years Experience",
+    "Advanced CBCT Imaging",
+  ];
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.8 }}
-                    className="relative"
-                >
-                    <div className="aspect-square overflow-hidden rounded-[2.5rem] bg-primary/5 p-4 shadow-3xl">
-                        <div className="h-full w-full rounded-[2rem] bg-cover bg-center shadow-inner" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBxkEQTJR4Tf4FrE0BY23evi2XHEjJGs4vUkepSQWxPTBsD3cPCCCWQh_odnIaHW5HNZsaFr2tEsszjurXm65zjd1fb8P_gj1YE2Dkj1EDc2aU6YJYkBKELBxgmnfvzSZPx_iqdfNCrR2QJ5AkLyBFavm57_wk2qmgVX80B2_Qnggg2Rhl9jIj5gMbwailpy3CtmpPayq6bEV6aO1cPguynNzvknikqno1_B5_PDWZJNQ-V_BIkHQUbuvp8qFSzzjTFxa-eFXFt0ws')" }}></div>
-                    </div>
+  return (
+    <section className="relative min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden z-10 bg-[#040C18]">
+      {/* Background Image with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity"
+          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=2000")' }}
+        />
+        {/* Soft studio lighting radial gradients */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(4,12,24,0.3)_0%,rgba(4,12,24,1)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#040C18]/60 to-[#040C18]" />
+        
+        {/* Warm glow behind headline */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(197,160,89,0.08)_0%,transparent_70%)] pointer-events-none blur-[60px]" />
+      </div>
 
-                    {/* Stats Floating Card */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5, duration: 0.5 }}
-                        className="absolute -bottom-8 -left-8 rounded-3xl bg-white p-6 shadow-2xl lg:block hidden border border-slate-100"
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="rounded-2xl bg-green-50 p-4 text-green-600">
-                                <span className="material-symbols-outlined text-3xl">verified_user</span>
-                            </div>
-                            <div>
-                                <p className="text-3xl font-black text-slate-900 leading-none">15+</p>
-                                <p className="mt-1 text-xs font-bold text-slate-400 uppercase tracking-widest">Years Experience</p>
-                            </div>
-                        </div>
-                    </motion.div>
+      {/* Content */}
+      <motion.div
+        className="relative z-10 flex flex-col items-center text-center px-6 max-w-5xl mx-auto"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Badge */}
+        <motion.div variants={fadeUp}>
+          <div className="inline-flex items-center gap-2 rounded-full bg-[rgba(197,160,89,0.1)] backdrop-blur-xl border border-[rgba(197,160,89,0.2)] px-5 py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-[#C5A059] shadow-[0_0_20px_rgba(197,160,89,0.1)] mb-8">
+            <span className="material-symbols-outlined text-[14px]">workspace_premium</span>
+            Award-Winning Maxillofacial Care · Ahmedabad
+          </div>
+        </motion.div>
 
-                    {/* Decorative Elements */}
-                    <div className="absolute -top-12 -right-12 h-64 w-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-                    <div className="absolute -bottom-12 -left-12 h-48 w-48 bg-blue-400/5 rounded-full blur-3xl -z-10" />
-                </motion.div>
+        {/* Headline */}
+        <motion.h1
+          variants={fadeUp}
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-[-0.03em] leading-[1.05] font-display text-white mb-8"
+        >
+          Excellence in
+          <br />
+          <span className="text-transparent bg-clip-text" style={{
+            backgroundImage: "linear-gradient(135deg, #ffffff 0%, #d6e3ff 50%, #64ffda 100%)",
+          }}>
+            Every Smile.
+          </span>
+        </motion.h1>
+
+        {/* Subheadline */}
+        <motion.p
+          variants={fadeUp}
+          className="max-w-[520px] text-lg font-light text-[#8c92ac] tracking-wide leading-relaxed mb-10"
+        >
+          Specialist care in dental implants, maxillofacial surgery, and smile transformation — delivered with technology and compassion.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div variants={fadeUp} className="flex flex-wrap items-center justify-center gap-4 mb-12">
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <Link
+              href="/contact"
+              className="relative overflow-hidden group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-[#2d476f] px-8 py-4 text-sm font-semibold tracking-wider text-white shadow-[0_0_20px_rgba(26,54,93,0.3)] hover:shadow-[0_0_40px_rgba(26,54,93,0.5)] transition-all"
+            >
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+              <span className="material-symbols-outlined text-[18px] font-extralight">event</span>
+              Book a Consultation
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
+            <a
+              href="#services"
+              className="inline-flex items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(26,54,93,0.2)] backdrop-blur-md px-8 py-4 text-sm font-semibold tracking-wider text-[#d6e3ff] hover:border-secondary hover:bg-secondary/10 transition-all"
+            >
+              <span className="material-symbols-outlined text-[18px] font-extralight">biotech</span>
+              Explore Services
+            </a>
+          </motion.div>
+        </motion.div>
+
+        {/* Trust indicators */}
+        <motion.div
+          variants={fadeUp}
+          className="inline-flex flex-wrap items-center justify-center gap-0 rounded-full bg-[rgba(255,255,255,0.03)] backdrop-blur-xl border border-[rgba(255,255,255,0.08)] shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]"
+        >
+          {trustItems.map((item, i) => (
+            <div key={i} className="flex items-center">
+              <span className="px-5 sm:px-6 py-3 text-[11px] sm:text-xs font-medium tracking-wider text-[#b3c1d9] whitespace-nowrap">
+                {item}
+              </span>
+              {i < trustItems.length - 1 && (
+                <div className="w-px h-4 bg-[rgba(255,255,255,0.15)]" />
+              )}
             </div>
-        </section>
-    );
+          ))}
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+      >
+        <div className="animate-bounce-chevron">
+          <span className="material-symbols-outlined text-[#8c92ac]/60 text-[28px]">expand_more</span>
+        </div>
+      </motion.div>
+    </section>
+  );
 }

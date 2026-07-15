@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { getDoctors, Doctor } from '@/lib/api';
+import { motion } from 'framer-motion';
 
 export default function AboutPage() {
     const [doctors, setDoctors] = useState<Doctor[]>([]);
@@ -14,125 +15,183 @@ export default function AboutPage() {
             .finally(() => setLoading(false));
     }, []);
 
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    };
+
     return (
-        <>
+        <main className="bg-transparent text-[#eaeaea] min-h-screen">
             {/* Hero Section */}
-            <section className="px-4 md:px-10 lg:px-40 py-8">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden rounded-xl bg-slate-200">
-                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOrZ_DJgUjM6y9dlcTMF7W3a5gYuSuUAekbafe8l695upxMnGnrJb40iTSSaZsx9hzyaEx_wa0xmqyT3NaQXRCz8ym6ItQYqsxt1msA1gJ0OAJmHVmuXiC6BUAnEzvXLvrEvzs2oDguwwvLXud-oIc7YxQV4cuWwSze79vAgUDrb1YyVtoHZm977WtTpa5szUTIyf_pDBbIE11k0e7wZgr4fAmXjj9vQ3jXPiD1L6QTvtTlMEalb6FgDak2qo7qabyl5qOmZhl1V0")' }}></div>
-                        <div className="absolute bottom-0 left-0 p-8 md:p-12">
-                            <h2 className="text-white text-4xl md:text-5xl font-extrabold mb-2">Dedicated to Excellence</h2>
-                            <p className="text-white/90 text-lg max-w-xl">Redefining pediatric dental care and surgical precision in a comforting environment.</p>
+            <section className="relative pt-32 pb-20 overflow-hidden">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/10 blur-[150px] pointer-events-none rounded-full -translate-y-1/2" />
+                
+                <div className="mx-auto max-w-7xl px-6 relative z-10">
+                    <motion.div 
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeInUp}
+                        className="relative w-full h-[400px] md:h-[550px] overflow-hidden rounded-[3rem] border border-[rgba(255,255,255,0.08)] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    >
+                        <div className="absolute inset-0 bg-cover bg-center transition-transform duration-[10s] hover:scale-110" 
+                            style={{ backgroundImage: 'linear-gradient(to top, #121212 0%, rgba(18, 18, 18, 0.4) 50%, transparent 100%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOrZ_DJgUjM6y9dlcTMF7W3a5gYuSuUAekbafe8l695upxMnGnrJb40iTSSaZsx9hzyaEx_wa0xmqyT3NaQXRCz8ym6ItQYqsxt1msA1gJ0OAJmHVmuXiC6BUAnEzvXLvrEvzs2oDguwwvLXud-oIc7YxQV4cuWwSze79vAgUDrb1YyVtoHZm977WtTpa5szUTIyf_pDBbIE11k0e7wZgr4fAmXjj9vQ3jXPiD1L6QTvtTlMEalb6FgDak2qo7qabyl5qOmZhl1V0")' }} 
+                        />
+                        <div className="absolute bottom-0 left-0 p-8 md:p-16 w-full">
+                            <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                                <span className="material-symbols-outlined text-[12px]">clinical_notes</span>
+                                Legacy of Care
+                            </div>
+                            <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 font-display leading-tight">Dedicated to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Clinical Excellence</span></h1>
+                            <p className="text-[#8c92ac] text-lg md:text-xl max-w-2xl font-light tracking-wide leading-relaxed">Redefining dental care and surgical precision in a futuristic, comfort-first environment.</p>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
-            {/* Clinic Introduction */}
-            <section className="px-4 md:px-10 lg:px-40 py-12 bg-white">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="flex-1">
-                            <span className="text-primary font-bold tracking-widest uppercase text-xs">Our Mission</span>
-                            <h2 className="text-3xl font-bold mt-2 mb-6">Advanced Care for Every Smile</h2>
-                            <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                                At Madhav Pediatric Dental Care, our mission is to provide specialized dental care for children and advanced surgical treatments for all. We combine a child-friendly environment with state-of-the-art technology to ensure the best outcomes for our young patients and complex surgical cases.
+            {/* Clinic Introduction - Bento Style Components */}
+            <section className="py-24 relative z-10">
+                <div className="mx-auto max-w-7xl px-6">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeInUp}
+                        >
+                            <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                                <span className="material-symbols-outlined text-[12px]">rocket_launch</span>
+                                Our Mission
+                            </div>
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 font-display">Advanced Care for <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8c92ac] to-white">Every Generation</span></h2>
+                            <p className="text-[#8c92ac] text-lg font-light leading-relaxed mb-6 tracking-wide">
+                                At Madhav Clinic, we merge specialized pediatric protocols with advanced maxillofacial surgical expertise. Our facility is a testament to how technology can transform dental experiences from clinical to restorative.
                             </p>
-                            <p className="text-slate-600 text-lg leading-relaxed">
-                                We believe that oral health is a vital component of overall well-being. Our team is dedicated to educating families while providing painless, effective treatments that set the foundation for a lifetime of healthy smiles.
+                            <p className="text-[#8c92ac] text-lg font-light leading-relaxed tracking-wide">
+                                We believe oral health is the cornerstone of systemic well-being. Our MDS-led team provides data-driven, painless treatments that set global standards in local care.
                             </p>
-                        </div>
-                        <div className="flex-1 grid grid-cols-2 gap-4">
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">child_care</span>
-                                <h3 className="font-bold">Pediatric Focus</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">precision_manufacturing</span>
-                                <h3 className="font-bold">Advanced Tech</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">health_and_safety</span>
-                                <h3 className="font-bold">Surgical Safety</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">volunteer_activism</span>
-                                <h3 className="font-bold">Patient Care</h3>
-                            </div>
+                        </motion.div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                            {[
+                                { icon: 'child_care', title: 'Pediatric Focus', desc: 'Child-centric protocols' },
+                                { icon: 'precision_manufacturing', title: 'Advanced Tech', desc: 'AI diagnostics' },
+                                { icon: 'health_and_safety', title: 'Surgical Safety', desc: 'Hospital grade' },
+                                { icon: 'volunteer_activism', title: 'Patient Care', desc: 'Empathy first' }
+                            ].map((item, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="glass-card p-8 rounded-[2rem] border border-white/5 flex flex-col items-center text-center group hover:bg-primary/5 transition-all duration-500"
+                                >
+                                    <div className="h-16 w-16 rounded-2xl bg-white/5 flex items-center justify-center text-primary mb-4 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
+                                        <span className="material-symbols-outlined text-3xl font-extralight">{item.icon}</span>
+                                    </div>
+                                    <h3 className="font-bold text-white mb-1 text-sm uppercase tracking-widest">{item.title}</h3>
+                                    <p className="text-[10px] text-[#8c92ac] font-medium uppercase tracking-tighter opacity-60">{item.desc}</p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
             {/* Doctor Profiles */}
-            <section className="px-4 md:px-10 lg:px-40 py-16">
-                <div className="max-w-[1200px] mx-auto text-center mb-12">
-                    <h2 className="text-3xl font-bold">Meet Our Specialists</h2>
-                    <p className="text-slate-500 mt-2">World-class expertise in pediatric and maxillofacial care</p>
-                </div>
-                <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-8">
-                    {loading ? (
-                        <div className="col-span-2 text-center py-10 text-slate-400">Loading doctors...</div>
-                    ) : (
-                        doctors.map((doc) => (
-                            <div key={doc.id} className="bg-white rounded-xl overflow-hidden shadow-lg border border-primary/5 flex flex-col md:flex-row">
-                                <div
-                                    className="md:w-1/2 aspect-[4/5] bg-cover bg-center bg-slate-100"
-                                    style={{ backgroundImage: doc.photo_url ? `url("${doc.photo_url}")` : undefined }}
+            <section className="py-24 border-t border-white/5 bg-[#121212]/40 backdrop-blur-2xl">
+                <div className="mx-auto max-w-7xl px-6">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                            <span className="material-symbols-outlined text-[12px]">groups</span>
+                            Elite Faculty
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Specialists</span></h2>
+                        <p className="text-[#8c92ac] mt-4 font-light tracking-wide italic">World-class expertise in pediatric and maxillofacial aesthetics.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-10">
+                        {loading ? (
+                            [1, 2].map(i => <div key={i} className="h-[400px] rounded-[3rem] glass-card animate-pulse bg-white/5" />)
+                        ) : (
+                            doctors.map((doc, i) => (
+                                <motion.div 
+                                    key={doc.id}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.2 }}
+                                    className="glass-card rounded-[3rem] overflow-hidden border border-white/5 flex flex-col lg:flex-row group hover:border-primary/30 transition-all duration-700 bg-black/20"
                                 >
-                                    {!doc.photo_url && (
-                                        <div className="w-full h-full flex items-center justify-center">
-                                            <span className="material-symbols-outlined text-slate-300 text-6xl">person</span>
+                                    <div className="lg:w-2/5 aspect-square lg:aspect-auto relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#121212]/80 z-10 hidden lg:block" />
+                                        <div
+                                            className="w-full h-full bg-cover bg-top grayscale group-hover:grayscale-0 transition-all duration-1000 scale-100 group-hover:scale-110"
+                                            style={{ backgroundImage: doc.photo_url ? `url("${doc.photo_url}")` : undefined }}
+                                        >
+                                            {!doc.photo_url && (
+                                                <div className="w-full h-full flex items-center justify-center bg-white/5">
+                                                    <span className="material-symbols-outlined text-white/20 text-6xl font-extralight">person</span>
+                                                </div>
+                                            )}
                                         </div>
-                                    )}
-                                </div>
-                                <div className="md:w-1/2 p-6 flex flex-col justify-center">
-                                    <h3 className="text-2xl font-bold">{doc.name}</h3>
-                                    <p className="text-primary font-semibold mb-3">{doc.qualification}</p>
-                                    <p className="text-slate-700 font-bold mb-2">{doc.specialization}</p>
-                                    <p className="text-sm text-slate-600 leading-relaxed">
-                                        {doc.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))
-                    )}
+                                    </div>
+                                    <div className="lg:w-3/5 p-10 flex flex-col justify-center relative z-20">
+                                        <span className="text-primary font-bold text-[10px] uppercase tracking-[0.3em] mb-2">{doc.qualification}</span>
+                                        <h3 className="text-3xl font-bold text-white mb-2 font-display">{doc.name}</h3>
+                                        <p className="text-white font-medium mb-6 text-sm flex items-center gap-2">
+                                            <span className="h-px w-8 bg-primary/50" />
+                                            {doc.specialization}
+                                        </p>
+                                        <p className="text-sm text-[#8c92ac] font-light leading-relaxed mb-6 italic">
+                                            "{doc.description}"
+                                        </p>
+                                        <div className="flex gap-4">
+                                            <div className="h-10 w-10 rounded-full glass-card flex items-center justify-center border border-white/10 text-white/40 hover:text-primary hover:border-primary transition-all cursor-pointer">
+                                                <span className="material-symbols-outlined text-lg">medical_services</span>
+                                            </div>
+                                            <div className="h-10 w-10 rounded-full glass-card flex items-center justify-center border border-white/10 text-white/40 hover:text-primary hover:border-primary transition-all cursor-pointer">
+                                                <span className="material-symbols-outlined text-lg">verified</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))
+                        )}
+                    </div>
                 </div>
             </section>
 
             {/* Our Commitment */}
-            <section className="px-4 md:px-10 lg:px-40 py-16 bg-primary/5">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold mb-4">Our Commitment to Patient Care</h2>
-                        <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
+            <section className="py-24 relative overflow-hidden">
+                <div className="mx-auto max-w-7xl px-6">
+                    <div className="text-center mb-16">
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-display">Client Commitment</h2>
+                        <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mx-auto rounded-full"></div>
                     </div>
                     <div className="grid md:grid-cols-3 gap-8">
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">verified_user</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Safety First</h4>
-                            <p className="text-slate-600">We adhere to the highest international sterilization protocols to ensure the absolute safety of every patient.</p>
-                        </div>
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">sentiment_very_satisfied</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Comfort Focused</h4>
-                            <p className="text-slate-600">From our child-friendly waiting area to sedation options, we prioritize a stress-free experience for children and adults.</p>
-                        </div>
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">groups</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Family Centric</h4>
-                            <p className="text-slate-600">We work closely with parents to create personalized long-term dental health plans for their children.</p>
-                        </div>
+                        {[
+                            { icon: 'verified_user', title: 'Safety Protocol', desc: 'Adhering to hospital-grade sterilization and international biological safety standards.' },
+                            { icon: 'sentiment_very_satisfied', title: 'Comfort Design', desc: 'From ambient acoustics to sedation dentistry, we prioritize a stress-free sensory experience.' },
+                            { icon: 'groups', title: 'Family Integration', desc: 'Personalized dental health blueprints designed collaboratively with families.' }
+                        ].map((card, i) => (
+                            <motion.div 
+                                key={i}
+                                whileHover={{ y: -10 }}
+                                className="glass-card p-10 rounded-[2.5rem] border border-white/5 relative group transition-all duration-500"
+                            >
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl pointer-events-none group-hover:bg-primary/10 transition-all" />
+                                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:border-primary/50 transition-all">
+                                    <span className="material-symbols-outlined text-primary text-3xl font-extralight group-hover:drop-shadow-[0_0_8px_rgba(77,97,252,0.8)]">{card.icon}</span>
+                                </div>
+                                <h4 className="text-xl font-bold text-white mb-4 font-display tracking-wide">{card.title}</h4>
+                                <p className="text-sm text-[#8c92ac] font-light leading-relaxed">{card.desc}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
-        </>
+        </main>
     );
 }
+
