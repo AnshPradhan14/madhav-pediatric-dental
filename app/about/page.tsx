@@ -106,7 +106,7 @@ export default function AboutPage() {
             <section className="py-24 border-t border-white/5 bg-[#121212]/40 backdrop-blur-2xl">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                             <span className="material-symbols-outlined text-[12px]">groups</span>
                             Elite Faculty
                         </div>
