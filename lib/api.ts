@@ -13,6 +13,10 @@ function authHeaders(): HeadersInit {
 async function apiFetch<T>(path: string, options?: RequestInit): Promise<T> {
     const res = await fetch(`${API_BASE}${path}`, options);
     if (!res.ok) {
+        if (res.status === 401 && typeof window !== "undefined") {
+            localStorage.removeItem("admin_token");
+            window.location.href = "/admin/login";
+        }
         const err = await res.json().catch(() => ({ detail: "Unknown error" }));
         throw new Error(err.detail ?? "Request failed");
     }

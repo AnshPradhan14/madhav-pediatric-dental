@@ -67,13 +67,13 @@ def on_startup():
     with Session(engine) as session:
         existing = session.exec(select(AdminUser).where(AdminUser.email == admin_email)).first()
         if not existing:
-            if env == "production":
-                print(f"⚠️ [WARNING] Production environment detected. Skipping creation of default admin account for {admin_email}. Please seed an admin manually.")
+            if env == "production" and admin_password == "admin123":
+                print(f"⚠️ [WARNING] Production environment detected with default password. Skipping creation of default admin account for {admin_email}. Please set a secure ADMIN_PASSWORD in .env.")
             else:
                 admin = AdminUser(email=admin_email, hashed_password=hash_password(admin_password))
                 session.add(admin)
                 session.commit()
-                print(f"✅ Default admin created: {admin_email} (DEVELOPMENT MODE ONLY)")
+                print(f"✅ Admin created: {admin_email}")
 
 
 @app.get("/")
