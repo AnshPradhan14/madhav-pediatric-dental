@@ -98,17 +98,17 @@ export default function BeforeAfterSection() {
                 className="w-full h-full object-cover brightness-110 contrast-110"
                 draggable={false}
               />
-              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-secondary text-[#051525] px-4 py-2 rounded-full text-xs font-bold tracking-widest shadow-[0_0_15px_rgba(100,255,218,0.5)]">
+              <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-secondary text-[#051525] px-4 py-2 rounded-full text-xs font-bold tracking-widest shadow-[0_0_15px_rgba(95,168,160,0.5)]">
                 AFTER
               </div>
             </motion.div>
 
             {/* Slider Handle */}
             <motion.div 
-              className="absolute top-0 bottom-0 z-20 w-1 bg-secondary shadow-[0_0_10px_rgba(100,255,218,0.5)]"
+              className="absolute top-0 bottom-0 z-20 w-1 bg-secondary shadow-[0_0_10px_rgba(95,168,160,0.5)]"
               style={{ left: handleLeft, translateX: "-50%" }}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-[#051525] flex items-center justify-center shadow-[0_0_20px_rgba(100,255,218,0.5)]">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-[#051525] flex items-center justify-center shadow-[0_0_20px_rgba(95,168,160,0.5)]">
                 <span className="material-symbols-outlined text-[20px]">swap_horiz</span>
               </div>
             </motion.div>

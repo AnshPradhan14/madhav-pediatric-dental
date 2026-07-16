@@ -18,7 +18,7 @@ export default function Footer() {
                         </span>
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white mb-6 tracking-tight">
                             Ready to Transform <br className="hidden sm:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6e3ff] to-secondary">Your Smile?</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#EAEAEA] to-[#B8D4D1]">Your Smile?</span>
                         </h2>
                         <p className="text-[#b3c1d9] font-light max-w-lg mx-auto mb-10 tracking-wide text-sm sm:text-base leading-relaxed">
                             Join thousands of patients who trust Madhav Dental for precision care, cutting-edge technology, and absolutely painless procedures.
@@ -27,15 +27,15 @@ export default function Footer() {
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
                                 href="/contact"
-                                className="w-full sm:w-auto relative overflow-hidden group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-secondary to-[#38debb] px-8 py-4 text-sm font-bold tracking-wider text-[#051525] shadow-[0_0_20px_rgba(100,255,218,0.3)] hover:shadow-[0_0_35px_rgba(100,255,218,0.5)] transition-all"
+                                className="w-full sm:w-auto relative overflow-hidden group inline-flex items-center justify-center gap-2 rounded-full bg-[#F4F1EA] px-8 py-4 text-sm font-bold tracking-wider text-[#1A1D23] shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)] transition-all"
                             >
-                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
                                 <span className="material-symbols-outlined text-[20px]">event</span>
                                 Book Consultation
                             </a>
                             <a
                                 href="tel:+918872300851"
-                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-[rgba(255,255,255,0.15)] bg-[rgba(255,255,255,0.05)] backdrop-blur-md px-8 py-4 text-sm font-semibold tracking-wider text-white hover:bg-[rgba(255,255,255,0.1)] hover:border-secondary/50 transition-all"
+                                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-secondary bg-transparent backdrop-blur-md px-8 py-4 text-sm font-semibold tracking-wider text-[#F4F1EA] hover:bg-secondary/10 hover:border-secondary/70 transition-all"
                             >
                                 <span className="material-symbols-outlined text-[18px] font-extralight text-secondary">call</span>
                                 Call Now
@@ -111,9 +111,9 @@ export default function Footer() {
                 <div className="border-t border-[rgba(255,255,255,0.05)] pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] font-semibold text-[#a8b4cc] tracking-widest uppercase">
                     <p>© {new Date().getFullYear()} Madhav Dental. All Rights Reserved.</p>
                     <div className="flex items-center gap-4">
-                        <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                        <Link href="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</Link>
                         <span className="w-1 h-1 rounded-full bg-[#a8b4cc]/30" />
-                        <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
+                        <Link href="/terms" className="hover:text-secondary transition-colors">Terms</Link>
                     </div>
                 </div>
             </div>

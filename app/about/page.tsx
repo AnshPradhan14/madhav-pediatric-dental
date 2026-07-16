@@ -58,7 +58,7 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             variants={fadeInUp}
                         >
-                            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                                 <span className="material-symbols-outlined text-[12px]">rocket_launch</span>
                                 Our Mission
                             </div>
@@ -73,10 +73,10 @@ export default function AboutPage() {
                         
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                { icon: 'child_care', title: 'Pediatric Focus', desc: 'Child-centric protocols', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(100,255,218,0.2)' },
+                                { icon: 'child_care', title: 'Pediatric Focus', desc: 'Child-centric protocols', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(95,168,160,0.2)' },
                                 { icon: 'precision_manufacturing', title: 'Advanced Tech', desc: 'AI diagnostics', color: 'from-primary/20 to-primary/5', iconColor: 'text-primary', glow: 'rgba(77,97,252,0.2)' },
                                 { icon: 'health_and_safety', title: 'Surgical Safety', desc: 'Hospital grade', color: 'from-primary/20 to-primary/5', iconColor: 'text-primary', glow: 'rgba(77,97,252,0.2)' },
-                                { icon: 'volunteer_activism', title: 'Patient Care', desc: 'Empathy first', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(100,255,218,0.2)' }
+                                { icon: 'volunteer_activism', title: 'Patient Care', desc: 'Empathy first', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(95,168,160,0.2)' }
                             ].map((item, i) => (
                                 <motion.div 
                                     key={i}
@@ -170,7 +170,7 @@ export default function AboutPage() {
             <section className="py-24 relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                        <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                             <span className="material-symbols-outlined text-[12px]">workspace_premium</span>
                             Our Commitment
                         </div>
@@ -179,9 +179,9 @@ export default function AboutPage() {
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {[
-                            { icon: 'verified_user', title: 'Safety Protocol', desc: 'Adhering to hospital-grade sterilization and international biological safety standards.', color: 'from-secondary', accent: 'rgba(100,255,218,0.15)', border: 'rgba(100,255,218,0.2)' },
+                            { icon: 'verified_user', title: 'Safety Protocol', desc: 'Adhering to hospital-grade sterilization and international biological safety standards.', color: 'from-secondary', accent: 'rgba(95,168,160,0.15)', border: 'rgba(95,168,160,0.2)' },
                             { icon: 'sentiment_very_satisfied', title: 'Comfort Design', desc: 'From ambient acoustics to sedation dentistry, we prioritize a stress-free sensory experience.', color: 'from-primary', accent: 'rgba(77,97,252,0.15)', border: 'rgba(77,97,252,0.2)' },
-                            { icon: 'groups', title: 'Family Integration', desc: 'Personalized dental health blueprints designed collaboratively with families.', color: 'from-secondary', accent: 'rgba(100,255,218,0.15)', border: 'rgba(100,255,218,0.2)' }
+                            { icon: 'groups', title: 'Family Integration', desc: 'Personalized dental health blueprints designed collaboratively with families.', color: 'from-secondary', accent: 'rgba(95,168,160,0.15)', border: 'rgba(95,168,160,0.2)' }
                         ].map((card, i) => (
                             <motion.div 
                                 key={i}

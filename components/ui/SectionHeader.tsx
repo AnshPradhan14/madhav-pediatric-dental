@@ -27,7 +27,7 @@ export default function SectionHeader({ badge, badgeIcon, title, gradientText, s
       <Badge icon={badgeIcon} className="mb-4" theme={theme}>{badge}</Badge>
       <h2 className={`mb-4 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl font-display ${isLight ? "text-[#111827]" : "text-white"}`}>
         {title}{" "}
-        <span className={`text-transparent bg-clip-text ${isLight ? "bg-gradient-to-r from-[#1a365d] to-[#1a365d]" : "bg-gradient-to-r from-[#d6e3ff] to-secondary"}`}>
+        <span className={`text-transparent bg-clip-text ${isLight ? "bg-gradient-to-r from-[#1a365d] to-[#1a365d]" : "bg-gradient-to-r from-[#d6e3ff] to-[#B8D4D1]"}`}>
           {gradientText}
         </span>
       </h2>

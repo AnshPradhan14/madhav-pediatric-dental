@@ -140,7 +140,7 @@ export default function TestimonialSlider() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">
                   {[...Array(t.rating)].map((_, i) => (
-                    <span key={i} className="material-symbols-outlined text-secondary text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
+                    <span key={i} className="material-symbols-outlined text-accent text-[16px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                   ))}
                 </div>
 
@@ -167,14 +167,14 @@ export default function TestimonialSlider() {
           <div className="flex justify-center gap-3 mt-8">
             <button
               onClick={scrollPrev}
-              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-[0_0_16px_rgba(100,255,218,0.2)] transition-all duration-300"
+              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 transition-all duration-300"
               aria-label="Previous testimonial"
             >
               <span className="material-symbols-outlined text-[20px] font-light">west</span>
             </button>
             <button
               onClick={scrollNext}
-              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-[0_0_16px_rgba(100,255,218,0.2)] transition-all duration-300"
+              className="h-11 w-11 rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.04)] flex items-center justify-center text-[#b3c1d9] hover:text-white hover:border-secondary/50 hover:bg-secondary/10 transition-all duration-300"
               aria-label="Next testimonial"
             >
               <span className="material-symbols-outlined text-[20px] font-light">east</span>

@@ -15,7 +15,7 @@ export default function MarqueeStrip() {
   const repeated = [...items, ...items, ...items, ...items];
 
   return (
-    <div className="relative z-10 w-full overflow-hidden bg-[#0d1c32] border-y border-[rgba(100,255,218,0.12)] my-0">
+    <div className="relative z-10 w-full overflow-hidden bg-[#0d1c32] border-y border-[rgba(95,168,160,0.12)] my-0">
       {/* Fade masks on left and right edges */}
       <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0d1c32] to-transparent" />
       <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0d1c32] to-transparent" />

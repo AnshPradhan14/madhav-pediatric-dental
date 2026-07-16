@@ -70,7 +70,7 @@ export default function HeroSection() {
           Excellence in
           <br />
           <span className="text-transparent bg-clip-text" style={{
-            backgroundImage: "linear-gradient(135deg, #ffffff 0%, #d6e3ff 50%, #64ffda 100%)",
+            backgroundImage: "linear-gradient(135deg, #ffffff 0%, #EAEAEA 50%, #B8D4D1 100%)",
           }}>
             Every Smile.
           </span>
@@ -89,9 +89,9 @@ export default function HeroSection() {
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
             <Link
               href="/contact"
-              className="relative overflow-hidden group inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-primary to-[#2d476f] px-8 py-4 text-sm font-semibold tracking-wider text-white shadow-[0_0_20px_rgba(26,54,93,0.3)] hover:shadow-[0_0_40px_rgba(26,54,93,0.5)] transition-all"
+              className="relative overflow-hidden group inline-flex items-center justify-center gap-3 rounded-full bg-[#F4F1EA] px-8 py-4 text-sm font-semibold tracking-wider text-[#1A1D23] shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_6px_16px_rgba(0,0,0,0.4)] transition-all"
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-black/5 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
               <span className="material-symbols-outlined text-[18px] font-extralight">event</span>
               Book a Consultation
             </Link>

@@ -61,7 +61,7 @@ export default function TechnologySection() {
             </motion.div>
             <motion.h2 variants={fadeIn} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.03em] text-white font-display mb-6">
               Where Precision{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6e3ff] to-secondary">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d6e3ff] to-[#B8D4D1]">
                 Meets Care
               </span>
             </motion.h2>
@@ -71,7 +71,7 @@ export default function TechnologySection() {
             <motion.div variants={fadeIn} className="flex flex-col gap-5">
               {technologies.slice(0, 2).map((tech) => (
                 <div key={tech.title} className="flex gap-4 group items-start">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary/10 border border-secondary/20 text-secondary group-hover:bg-secondary group-hover:text-[#051525] group-hover:shadow-[0_0_20px_rgba(100,255,218,0.4)] transition-all duration-400">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary/10 border border-secondary/20 text-secondary group-hover:bg-secondary group-hover:text-[#051525] group-hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-all duration-400">
                     <span className="material-symbols-outlined text-[22px] font-light">{tech.icon}</span>
                   </div>
                   <div>
@@ -89,14 +89,14 @@ export default function TechnologySection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="rounded-2xl bg-[#0a1e30] border border-secondary/15 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_0_1px_rgba(100,255,218,0.05)] overflow-hidden"
+            className="rounded-2xl bg-[#0a1e30] border border-secondary/15 shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
           >
             {/* Terminal header bar */}
             <div className="flex items-center gap-2 px-6 py-3.5 bg-[#061626] border-b border-secondary/10">
               <div className="flex gap-1.5">
                 <div className="h-3 w-3 rounded-full bg-[rgba(255,255,255,0.1)]" />
                 <div className="h-3 w-3 rounded-full bg-[rgba(255,255,255,0.1)]" />
-                <div className="h-3 w-3 rounded-full bg-secondary/60 shadow-[0_0_8px_rgba(100,255,218,0.4)]" />
+                <div className="h-3 w-3 rounded-full bg-secondary/60" />
               </div>
               <span className="ml-2 text-[10px] font-bold uppercase tracking-[0.25em] text-[#86a0cd]">Technology Stack · Active</span>
             </div>

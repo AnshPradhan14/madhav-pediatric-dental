@@ -63,7 +63,7 @@ export default function GalleryPage() {
                     variants={fadeInUp}
                     className="mb-16 text-center md:text-left"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">visibility</span>
                         Visual Portfolio
                     </div>
@@ -78,7 +78,7 @@ export default function GalleryPage() {
                 {/* Gallery Filter (Simplified UI for Premium Feel) */}
                 <div className="flex flex-wrap gap-4 mb-12">
                     {["All Archives", "Interior Design", "Clinical Suite", "Technology"].map((filter, i) => (
-                        <button key={i} className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? "bg-secondary text-[#051525] shadow-[0_0_20px_rgba(100,255,218,0.3)]" : "border border-white/10 bg-[#121212]/50 text-[#a8b4cc] hover:text-white hover:border-secondary/50"}`}>
+                        <button key={i} className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? "bg-secondary text-[#051525] shadow-[0_0_20px_rgba(95,168,160,0.3)]" : "border border-white/10 bg-[#121212]/50 text-[#a8b4cc] hover:text-white hover:border-secondary/50"}`}>
                             {filter}
                         </button>
                     ))}
@@ -88,8 +88,8 @@ export default function GalleryPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {galleryItems.map((item, i) => {
                         const isTeal = i % 2 === 0;
-                        const glowColor = isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
-                        const borderColor = isTeal ? 'rgba(100,255,218,0.3)' : 'rgba(77,97,252,0.3)';
+                        const glowColor = isTeal ? 'rgba(95,168,160,0.15)' : 'rgba(77,97,252,0.15)';
+                        const borderColor = isTeal ? 'rgba(95,168,160,0.3)' : 'rgba(77,97,252,0.3)';
                         const textColor = isTeal ? 'text-secondary' : 'text-primary';
                         const badgeBg = isTeal ? 'bg-secondary/20' : 'bg-primary/20';
                         

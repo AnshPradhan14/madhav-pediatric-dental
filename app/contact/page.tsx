@@ -62,7 +62,7 @@ export default function ContactPage() {
                     variants={fadeInUp}
                     className="mb-16 text-center max-w-2xl mx-auto"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">contact_support</span>
                         Direct Access
                     </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                             
                             {/* Background glow */}
                             <div className="absolute top-0 right-0 w-40 h-40 blur-3xl pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 rounded-full"
-                                 style={{ background: 'rgba(100,255,218,0.15)' }} />
+                                 style={{ background: 'rgba(95,168,160,0.15)' }} />
 
                             <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary mb-8 flex items-center gap-2">
                                 <span className="w-8 h-px bg-secondary/30" />
@@ -212,8 +212,8 @@ export default function ContactPage() {
                                     { label: 'Email', text: settings?.email, icon: 'mail', isTeal: true, conditional: !!settings?.email }
                                 ].map((info, i) => {
                                     if (!info.conditional) return null;
-                                    const glowColor = info.isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
-                                    const borderColor = info.isTeal ? 'rgba(100,255,218,0.2)' : 'rgba(77,97,252,0.2)';
+                                    const glowColor = info.isTeal ? 'rgba(95,168,160,0.15)' : 'rgba(77,97,252,0.15)';
+                                    const borderColor = info.isTeal ? 'rgba(95,168,160,0.2)' : 'rgba(77,97,252,0.2)';
                                     const textColor = info.isTeal ? 'text-secondary' : 'text-primary';
 
                                     return (

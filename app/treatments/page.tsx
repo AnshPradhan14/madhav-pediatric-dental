@@ -39,7 +39,7 @@ export default function TreatmentsPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-20 text-center md:text-left"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">dataset</span>
                         Advanced Clinical Protocols
                     </div>
@@ -72,8 +72,8 @@ export default function TreatmentsPage() {
                             treatments.map((t, i) => {
                                 const isTeal = i % 2 !== 0;
                                 const colorClass = isTeal ? 'secondary' : 'primary';
-                                const glowColor = isTeal ? 'rgba(100,255,218,0.2)' : 'rgba(77,97,252,0.2)';
-                                const accentColor = isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
+                                const glowColor = isTeal ? 'rgba(95,168,160,0.2)' : 'rgba(77,97,252,0.2)';
+                                const accentColor = isTeal ? 'rgba(95,168,160,0.15)' : 'rgba(77,97,252,0.15)';
                                 const gradientFrom = isTeal ? 'from-secondary' : 'from-primary';
                                 const textColor = isTeal ? 'text-secondary' : 'text-primary';
 
@@ -126,7 +126,7 @@ export default function TreatmentsPage() {
                         
                         <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                             <div>
-                                <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-8 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                                <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-8 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(95,168,160,0.15)]">
                                     <span className="material-symbols-outlined text-[12px]">verified</span>
                                     Featured Protocol
                                 </div>
@@ -154,8 +154,8 @@ export default function TreatmentsPage() {
                                     { icon: 'payments', label: 'Optimized Cost', isTeal: false },
                                     { icon: 'schedule', label: 'Rapid Recovery', isTeal: true }
                                 ].map((badge, i) => {
-                                    const glowColor = badge.isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
-                                    const borderColor = badge.isTeal ? 'rgba(100,255,218,0.2)' : 'rgba(77,97,252,0.2)';
+                                    const glowColor = badge.isTeal ? 'rgba(95,168,160,0.15)' : 'rgba(77,97,252,0.15)';
+                                    const borderColor = badge.isTeal ? 'rgba(95,168,160,0.2)' : 'rgba(77,97,252,0.2)';
                                     const textColor = badge.isTeal ? 'text-secondary' : 'text-primary';
                                     
                                     return (

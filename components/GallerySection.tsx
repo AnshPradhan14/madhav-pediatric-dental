@@ -28,7 +28,7 @@ export default function GallerySection() {
                     viewport={{ once: true }}
                     className="mb-16 text-center"
                 >
-                    <div className="inline-flex w-fit items-center gap-2 rounded-full glass-card px-3 py-1 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_15px_rgba(100,255,218,0.15)]">
+                    <div className="inline-flex w-fit items-center gap-2 rounded-full glass-card px-3 py-1 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_15px_rgba(95,168,160,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">view_comfy_alt</span>
                         Facility Tour
                     </div>

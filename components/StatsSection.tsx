@@ -46,7 +46,7 @@ export default function StatsSection() {
     /* Alternate background: slightly lighter panel for visual rhythm */
     <section className="py-20 sm:py-24 relative z-10 w-full overflow-hidden bg-[#0d1c32]">
       <div className="bg-noise" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(100,255,218,0.04)_0%,transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(95,168,160,0.04)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
         <motion.div
@@ -63,7 +63,7 @@ export default function StatsSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col items-center text-center py-8 sm:py-10 px-4 rounded-2xl border border-transparent hover:border-[rgba(100,255,218,0.15)] hover:bg-[rgba(26,54,93,0.3)] transition-all duration-500"
+              className="group flex flex-col items-center text-center py-8 sm:py-10 px-4 rounded-2xl border border-transparent hover:border-[rgba(95,168,160,0.15)] hover:bg-[rgba(26,54,93,0.3)] transition-all duration-500"
             >
               <span className="material-symbols-outlined text-secondary/60 text-[28px] mb-3 group-hover:text-secondary transition-colors duration-300">{stat.icon}</span>
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />

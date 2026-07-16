@@ -3,15 +3,15 @@
 @theme {
   --color-primary: #1a365d;
   --color-primary-glow: rgba(26, 54, 93, 0.4);
-  --color-canvas: #0a192f;
+  --color-canvas: #0F1720;
   --color-sterling: #d6e3ff;
   --color-slate: #86a0cd;
   --color-glass-bg: rgba(26, 54, 93, 0.4);
   --color-glass-border: rgba(255, 255, 255, 0.1);
-  --color-background: #0a192f;
+  --color-background: #0F1720;
   --color-foreground: #d6e3ff;
-  --color-secondary: #64ffda;
-  --color-accent: #c5a059;
+  --color-secondary: #5FA8A0;
+  --color-accent: #C9A96A;
 
   --font-display: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
@@ -43,12 +43,12 @@ body {
 
 /* Custom Selection Color */
 ::selection {
-  background-color: rgba(100, 255, 218, 0.25);
+  background-color: rgba(95, 168, 160, 0.25);
   color: #ffffff;
 }
 
 ::-moz-selection {
-  background-color: rgba(100, 255, 218, 0.25);
+  background-color: rgba(95, 168, 160, 0.25);
   color: #ffffff;
 }
 
@@ -62,18 +62,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #64ffda;
+  background: #5FA8A0;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #38debb;
+  background: #49857d;
 }
 
 /* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #64ffda #0a192f;
+  scrollbar-color: #5FA8A0 #0F1720;
 }
 
 /* Noise Texture Overlay */
