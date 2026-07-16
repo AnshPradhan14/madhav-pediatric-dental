@@ -32,8 +32,9 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 app.add_middleware(SlowAPIMiddleware)
 
 # Mount public directory for uploads
-os.makedirs("public/uploads", exist_ok=True)
-app.mount("/uploads", StaticFiles(directory="public/uploads"), name="uploads")
+upload_dir = os.getenv("UPLOAD_DIR", "public/uploads")
+os.makedirs(upload_dir, exist_ok=True)
+app.mount("/uploads", StaticFiles(directory=upload_dir), name="uploads")
 
 # CORS: allow Next.js frontend
 app.add_middleware(

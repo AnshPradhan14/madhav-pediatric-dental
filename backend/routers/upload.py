@@ -7,7 +7,7 @@ from PIL import Image, UnidentifiedImageError
 
 router = APIRouter(prefix="/api/upload", tags=["upload"])
 
-UPLOAD_DIR = "public/uploads"
+UPLOAD_DIR = os.getenv("UPLOAD_DIR", "public/uploads")
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.post("")
