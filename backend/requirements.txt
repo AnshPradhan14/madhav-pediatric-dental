@@ -8,3 +8,4 @@ aiofiles
 python-dotenv
 Pillow
 slowapi
+pydantic[email]

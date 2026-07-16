@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Link from "next/link";
 
 const services = [
   { title: "Dental Implants", desc: "Permanent tooth replacement with precision-placed titanium implants and digital surgical guides for optimal outcomes.", icon: "dentistry", featured: true },
@@ -54,7 +55,7 @@ export default function ServicesSection() {
           {services.map((s, i) => {
             const colSpan = s.featured
               ? "lg:col-span-2"
-              : s.fullWidth
+              : (s as any).fullWidth
               ? "sm:col-span-2 lg:col-span-4"
               : "lg:col-span-1";
 
@@ -69,6 +70,9 @@ export default function ServicesSection() {
                   hover:shadow-[0_20px_40px_rgba(26,54,93,0.08)]
                   cursor-pointer ${colSpan}`}
               >
+                <Link href="/treatments" className="absolute inset-0 z-20">
+                  <span className="sr-only">Learn more about {s.title}</span>
+                </Link>
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#f8f9fa] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
 
@@ -81,7 +85,7 @@ export default function ServicesSection() {
                       <span className="material-symbols-outlined text-[28px] font-light">{s.icon}</span>
                     </motion.div>
 
-                    <h4 className={`mb-2.5 font-bold text-[#111827] transition-colors duration-300 font-display ${s.featured || s.fullWidth ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"}`}>
+                    <h4 className={`mb-2.5 font-bold text-[#111827] transition-colors duration-300 font-display ${s.featured || (s as any).fullWidth ? "text-xl sm:text-2xl" : "text-lg sm:text-xl"}`}>
                       {s.title}
                     </h4>
 

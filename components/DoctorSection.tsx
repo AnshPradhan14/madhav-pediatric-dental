@@ -7,7 +7,7 @@ import Badge from "@/components/ui/Badge";
 import { getDoctors, Doctor } from "@/lib/api";
 
 // Clinic equipment photo from Unsplash — free to use
-const CLINIC_IMAGE_URL = "https://images.unsplash.com/photo-1588776814546-1ffedca67b67?w=800&auto=format&fit=crop&q=80";
+const CLINIC_IMAGE_URL = "/images/modern-equipment.png";
 
 export default function DoctorSection() {
   const [doctors, setDoctors] = useState<Doctor[]>([]);
@@ -21,6 +21,12 @@ export default function DoctorSection() {
   }, []);
 
   const doctor = doctors[0];
+  const activeDoctor = doctor || {
+    name: "Dr. Ankit Patel",
+    qualification: "MDS - Oral & Maxillofacial Surgery",
+    description: "Specialist in dental implants and complex surgeries with over 15 years of experience delivering precision care.",
+    photo_url: null,
+  };
 
   return (
     <section className="py-24 sm:py-28 relative z-10 w-full overflow-hidden">
@@ -43,14 +49,16 @@ export default function DoctorSection() {
               <div className="aspect-[4/5] rounded-[1.3rem] overflow-hidden bg-[#0d1c32] relative">
                 {loading ? (
                   <div className="w-full h-full bg-white/5 animate-pulse" />
-                ) : doctor?.photo_url ? (
+                ) : activeDoctor.photo_url ? (
                   <div
                     className="w-full h-full bg-cover bg-top"
-                    style={{ backgroundImage: `url("${doctor.photo_url}")` }}
+                    style={{ backgroundImage: `url("${activeDoctor.photo_url}")` }}
+                    role="img"
+                    aria-label={`Portrait of ${activeDoctor.name}`}
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-[#0d1c32]">
-                    <span className="material-symbols-outlined text-[#8c92ac]/20 text-[120px] font-extralight">person</span>
+                    <span className="material-symbols-outlined text-[#a8b4cc]/20 text-[120px] font-extralight">person</span>
                   </div>
                 )}
                 {/* Gradient overlay */}
@@ -75,20 +83,18 @@ export default function DoctorSection() {
                 <div className="h-5 w-1/2 bg-white/5 rounded-lg animate-pulse" />
                 <div className="h-24 w-full bg-white/5 rounded-lg animate-pulse" />
               </>
-            ) : doctor ? (
+            ) : (
               <>
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-[-0.03em] text-white font-display">
-                  {doctor.name}
+                  {activeDoctor.name}
                 </h2>
                 <p className="text-secondary font-semibold text-sm uppercase tracking-[0.15em]">
-                  {doctor.qualification}
+                  {activeDoctor.qualification}
                 </p>
                 <p className="text-base sm:text-lg font-light text-[#b3c1d9] tracking-wide leading-relaxed max-w-lg">
-                  {doctor.description}
+                  {activeDoctor.description}
                 </p>
               </>
-            ) : (
-              <p className="text-[#b3c1d9]">Doctor information is being updated.</p>
             )}
 
             {/* Achievement pills — flex-wrap prevents clipping */}
@@ -152,11 +158,13 @@ export default function DoctorSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] shadow-[0_8px_24px_rgba(0,0,0,0.4)] hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] transition-all duration-500"
+              className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.08)] shadow-[0_8px_24px_rgba(0,0,0,0.4)] hover:-translate-y-2 hover:shadow-[0_16px_40px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out transform-gpu"
             >
               <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out transform-gpu group-hover:scale-105"
                 style={{ backgroundImage: `url("${img.url}")` }}
+                role="img"
+                aria-label={img.label}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#041329] via-[rgba(4,19,41,0.4)] to-transparent" />
               <div className="absolute bottom-4 left-4 flex items-center gap-2">

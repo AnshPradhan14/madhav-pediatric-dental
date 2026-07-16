@@ -12,6 +12,7 @@ const testimonials = [
     role: "Implant Patient",
     treatment: "Dental Implants",
     rating: 5,
+    date: "March 2024",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const testimonials = [
     role: "Cosmetic Patient",
     treatment: "Smile Design",
     rating: 5,
+    date: "January 2024",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const testimonials = [
     role: "Maxillofacial Patient",
     treatment: "Maxillofacial Surgery",
     rating: 5,
+    date: "December 2023",
   },
   {
     id: 4,
@@ -36,6 +39,7 @@ const testimonials = [
     role: "Parent",
     treatment: "Pediatric Care",
     rating: 5,
+    date: "May 2024",
   },
   {
     id: 5,
@@ -44,6 +48,7 @@ const testimonials = [
     role: "Crown Patient",
     treatment: "CAD/CAM Crowns",
     rating: 5,
+    date: "April 2024",
   },
 ];
 
@@ -66,7 +71,10 @@ export default function TestimonialSlider() {
 
   useEffect(() => {
     if (!isPaused) {
-      intervalRef.current = setInterval(scrollNext, 5000);
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!prefersReduced) {
+        intervalRef.current = setInterval(scrollNext, 5000);
+      }
     }
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -76,7 +84,12 @@ export default function TestimonialSlider() {
   const scrollPrev = () => {
     const el = scrollRef.current;
     if (!el) return;
-    el.scrollBy({ left: -400, behavior: "smooth" });
+    const cardWidth = 400;
+    if (el.scrollLeft <= 0) {
+      el.scrollTo({ left: el.scrollWidth - el.clientWidth, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: -cardWidth, behavior: "smooth" });
+    }
   };
 
   return (
@@ -143,7 +156,7 @@ export default function TestimonialSlider() {
                   </div>
                   <div>
                     <p className="font-bold text-white text-sm font-display">{t.author}</p>
-                    <p className="text-[10px] text-[#86a0cd] font-semibold uppercase tracking-[0.15em] mt-0.5">{t.role} · {t.treatment}</p>
+                    <p className="text-[10px] text-[#86a0cd] font-semibold uppercase tracking-[0.15em] mt-0.5">{t.role} · {t.date}</p>
                   </div>
                 </div>
               </motion.div>

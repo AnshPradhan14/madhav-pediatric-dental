@@ -1,4 +1,5 @@
 from sqlmodel import SQLModel, Field
+from pydantic import EmailStr
 from typing import Optional
 from datetime import datetime
 
@@ -7,7 +8,7 @@ class Appointment(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str
     phone: str
-    email: Optional[str] = None
+    email: Optional[EmailStr] = None
     treatment: str
     preferred_date: str
     message: Optional[str] = None
@@ -18,7 +19,7 @@ class Appointment(SQLModel, table=True):
 class AppointmentCreate(SQLModel):
     name: str
     phone: str
-    email: Optional[str] = None
+    email: Optional[EmailStr] = None
     treatment: str
     preferred_date: str
     message: Optional[str] = None

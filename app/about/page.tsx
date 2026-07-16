@@ -41,8 +41,8 @@ export default function AboutPage() {
                                 <span className="material-symbols-outlined text-[12px]">clinical_notes</span>
                                 Legacy of Care
                             </div>
-                            <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 font-display leading-tight">Dedicated to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Clinical Excellence</span></h1>
-                            <p className="text-[#8c92ac] text-lg md:text-xl max-w-2xl font-light tracking-wide leading-relaxed">Redefining dental care and surgical precision in a futuristic, comfort-first environment.</p>
+                            <h1 className="text-white text-4xl md:text-6xl font-extrabold mb-4 font-display leading-tight">Dedicated to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#a8b4cc]">Clinical Excellence</span></h1>
+                            <p className="text-[#a8b4cc] text-lg md:text-xl max-w-2xl font-light tracking-wide leading-relaxed">Redefining dental care and surgical precision in a futuristic, comfort-first environment.</p>
                         </div>
                     </motion.div>
                 </div>
@@ -58,25 +58,25 @@ export default function AboutPage() {
                             viewport={{ once: true }}
                             variants={fadeInUp}
                         >
-                            <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                            <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
                                 <span className="material-symbols-outlined text-[12px]">rocket_launch</span>
                                 Our Mission
                             </div>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 font-display">Advanced Care for <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8c92ac] to-white">Every Generation</span></h2>
-                            <p className="text-[#8c92ac] text-lg font-light leading-relaxed mb-6 tracking-wide">
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8 font-display">Advanced Care for <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a8b4cc] to-white">Every Generation</span></h2>
+                            <p className="text-[#a8b4cc] text-lg font-light leading-relaxed mb-6 tracking-wide">
                                 At Madhav Clinic, we merge specialized pediatric protocols with advanced maxillofacial surgical expertise. Our facility is a testament to how technology can transform dental experiences from clinical to restorative.
                             </p>
-                            <p className="text-[#8c92ac] text-lg font-light leading-relaxed tracking-wide">
+                            <p className="text-[#a8b4cc] text-lg font-light leading-relaxed tracking-wide">
                                 We believe oral health is the cornerstone of systemic well-being. Our MDS-led team provides data-driven, painless treatments that set global standards in local care.
                             </p>
                         </motion.div>
                         
                         <div className="grid grid-cols-2 gap-4">
                             {[
-                                { icon: 'child_care', title: 'Pediatric Focus', desc: 'Child-centric protocols' },
-                                { icon: 'precision_manufacturing', title: 'Advanced Tech', desc: 'AI diagnostics' },
-                                { icon: 'health_and_safety', title: 'Surgical Safety', desc: 'Hospital grade' },
-                                { icon: 'volunteer_activism', title: 'Patient Care', desc: 'Empathy first' }
+                                { icon: 'child_care', title: 'Pediatric Focus', desc: 'Child-centric protocols', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(100,255,218,0.2)' },
+                                { icon: 'precision_manufacturing', title: 'Advanced Tech', desc: 'AI diagnostics', color: 'from-primary/20 to-primary/5', iconColor: 'text-primary', glow: 'rgba(77,97,252,0.2)' },
+                                { icon: 'health_and_safety', title: 'Surgical Safety', desc: 'Hospital grade', color: 'from-primary/20 to-primary/5', iconColor: 'text-primary', glow: 'rgba(77,97,252,0.2)' },
+                                { icon: 'volunteer_activism', title: 'Patient Care', desc: 'Empathy first', color: 'from-secondary/20 to-secondary/5', iconColor: 'text-secondary', glow: 'rgba(100,255,218,0.2)' }
                             ].map((item, i) => (
                                 <motion.div 
                                     key={i}
@@ -84,13 +84,17 @@ export default function AboutPage() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="glass-card p-8 rounded-[2rem] border border-white/5 flex flex-col items-center text-center group hover:bg-primary/5 transition-all duration-500"
+                                    className="relative p-6 rounded-[2rem] border border-white/8 flex flex-col items-center text-center group hover:-translate-y-1 transition-all duration-500 ease-out transform-gpu overflow-hidden"
+                                    style={{ background: 'rgba(13,23,38,0.7)', backdropFilter: 'blur(12px)' }}
                                 >
-                                    <div className="h-16 w-16 rounded-2xl bg-white/5 flex items-center justify-center text-primary mb-4 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-xl">
-                                        <span className="material-symbols-outlined text-3xl font-extralight">{item.icon}</span>
+                                    {/* Corner glow */}
+                                    <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl ${item.color} blur-2xl pointer-events-none`} />
+                                    <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${item.color} border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-500 shadow-lg`}
+                                        style={{ boxShadow: `0 0 20px ${item.glow}` }}>
+                                        <span className={`material-symbols-outlined text-3xl font-light ${item.iconColor}`}>{item.icon}</span>
                                     </div>
-                                    <h3 className="font-bold text-white mb-1 text-sm uppercase tracking-widest">{item.title}</h3>
-                                    <p className="text-[10px] text-[#8c92ac] font-medium uppercase tracking-tighter opacity-60">{item.desc}</p>
+                                    <h3 className="font-bold text-white mb-1.5 text-sm uppercase tracking-widest">{item.title}</h3>
+                                    <p className="text-[11px] text-[#a8b4cc] font-medium uppercase tracking-wider">{item.desc}</p>
                                 </motion.div>
                             ))}
                         </div>
@@ -106,8 +110,8 @@ export default function AboutPage() {
                             <span className="material-symbols-outlined text-[12px]">groups</span>
                             Elite Faculty
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Specialists</span></h2>
-                        <p className="text-[#8c92ac] mt-4 font-light tracking-wide italic">World-class expertise in pediatric and maxillofacial aesthetics.</p>
+                        <h2 className="text-3xl md:text-5xl font-extrabold text-white font-display">Meet Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#a8b4cc]">Specialists</span></h2>
+                        <p className="text-[#a8b4cc] mt-4 font-light tracking-wide italic">World-class expertise in pediatric and maxillofacial aesthetics.</p>
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-10">
@@ -143,7 +147,7 @@ export default function AboutPage() {
                                             <span className="h-px w-8 bg-primary/50" />
                                             {doc.specialization}
                                         </p>
-                                        <p className="text-sm text-[#8c92ac] font-light leading-relaxed mb-6 italic">
+                                        <p className="text-sm text-[#a8b4cc] font-light leading-relaxed mb-6 italic">
                                             "{doc.description}"
                                         </p>
                                         <div className="flex gap-4">
@@ -166,26 +170,41 @@ export default function AboutPage() {
             <section className="py-24 relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="text-center mb-16">
-                        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-display">Client Commitment</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent mx-auto rounded-full"></div>
+                        <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
+                            <span className="material-symbols-outlined text-[12px]">workspace_premium</span>
+                            Our Commitment
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 font-display">Client <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-primary">Commitment</span></h2>
+                        <div className="w-24 h-px bg-gradient-to-r from-transparent via-secondary/50 to-transparent mx-auto"></div>
                     </div>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-3 gap-6">
                         {[
-                            { icon: 'verified_user', title: 'Safety Protocol', desc: 'Adhering to hospital-grade sterilization and international biological safety standards.' },
-                            { icon: 'sentiment_very_satisfied', title: 'Comfort Design', desc: 'From ambient acoustics to sedation dentistry, we prioritize a stress-free sensory experience.' },
-                            { icon: 'groups', title: 'Family Integration', desc: 'Personalized dental health blueprints designed collaboratively with families.' }
+                            { icon: 'verified_user', title: 'Safety Protocol', desc: 'Adhering to hospital-grade sterilization and international biological safety standards.', color: 'from-secondary', accent: 'rgba(100,255,218,0.15)', border: 'rgba(100,255,218,0.2)' },
+                            { icon: 'sentiment_very_satisfied', title: 'Comfort Design', desc: 'From ambient acoustics to sedation dentistry, we prioritize a stress-free sensory experience.', color: 'from-primary', accent: 'rgba(77,97,252,0.15)', border: 'rgba(77,97,252,0.2)' },
+                            { icon: 'groups', title: 'Family Integration', desc: 'Personalized dental health blueprints designed collaboratively with families.', color: 'from-secondary', accent: 'rgba(100,255,218,0.15)', border: 'rgba(100,255,218,0.2)' }
                         ].map((card, i) => (
                             <motion.div 
                                 key={i}
-                                whileHover={{ y: -10 }}
-                                className="glass-card p-10 rounded-[2.5rem] border border-white/5 relative group transition-all duration-500"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.12 }}
+                                whileHover={{ y: -8 }}
+                                className="relative p-8 rounded-[2rem] overflow-hidden group cursor-default transition-all duration-500 ease-out transform-gpu"
+                                style={{ background: 'rgba(13,23,38,0.8)', border: `1px solid rgba(255,255,255,0.07)`, backdropFilter: 'blur(16px)' }}
                             >
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl pointer-events-none group-hover:bg-primary/10 transition-all" />
-                                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-8 border border-white/10 group-hover:border-primary/50 transition-all">
-                                    <span className="material-symbols-outlined text-primary text-3xl font-extralight group-hover:drop-shadow-[0_0_8px_rgba(77,97,252,0.8)]">{card.icon}</span>
+                                {/* Gradient top accent line */}
+                                <div className={`absolute top-0 left-8 right-8 h-px bg-gradient-to-r ${card.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                                {/* Background glow */}
+                                <div className="absolute top-0 right-0 w-40 h-40 blur-3xl pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 rounded-full"
+                                    style={{ background: card.accent }} />
+                                {/* Icon */}
+                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border transition-all duration-500 group-hover:scale-110"
+                                    style={{ background: card.accent, borderColor: card.border, boxShadow: `0 0 20px ${card.accent}` }}>
+                                    <span className={`material-symbols-outlined text-3xl font-light ${card.color === 'from-secondary' ? 'text-secondary' : 'text-primary'}`}>{card.icon}</span>
                                 </div>
-                                <h4 className="text-xl font-bold text-white mb-4 font-display tracking-wide">{card.title}</h4>
-                                <p className="text-sm text-[#8c92ac] font-light leading-relaxed">{card.desc}</p>
+                                <h4 className="text-lg font-bold text-white mb-3 font-display tracking-wide">{card.title}</h4>
+                                <p className="text-sm text-[#a8b4cc] font-light leading-relaxed">{card.desc}</p>
                             </motion.div>
                         ))}
                     </div>

@@ -55,7 +55,7 @@ function LiveStatusIndicator() {
         {status.isOpen && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>}
         <span className={`relative inline-flex rounded-full h-2 w-2 ${status.isOpen ? 'bg-secondary' : 'bg-[#ef4444]'}`}></span>
       </span>
-      <span className={`text-[9px] font-bold uppercase tracking-widest ${status.isOpen ? 'text-secondary' : 'text-[#8c92ac]'}`}>
+      <span className={`text-[9px] font-bold uppercase tracking-widest ${status.isOpen ? 'text-secondary' : 'text-[#a8b4cc]'}`}>
         {status.text}
       </span>
     </div>
@@ -100,7 +100,7 @@ export default function ContactSection() {
                       <h4 className="text-sm font-bold text-white/90 uppercase tracking-widest">{item.title}</h4>
                       {item.showLiveStatus && <LiveStatusIndicator />}
                     </div>
-                    <p className="text-sm text-[#8c92ac] font-light leading-relaxed">{item.detail}</p>
+                    <p className="text-sm text-[#a8b4cc] font-light leading-relaxed">{item.detail}</p>
                   </div>
                 </div>
               ))}
@@ -122,7 +122,7 @@ export default function ContactSection() {
             {/* Right: Google Map */}
             <div className="relative min-h-[400px] lg:min-h-0">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.933391218227!2d72.664446576136!3d23.026210066228148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87178de34749%3A0xc3f18e87dcb463c6!2sNikol%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1709194247563!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=Raspan+Arcade,+Nikol,+Ahmedabad&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(100%)" }}
@@ -136,7 +136,7 @@ export default function ContactSection() {
                   <span className="material-symbols-outlined text-primary text-[24px]">location_on</span>
                   <div>
                     <p className="text-white font-bold text-sm font-display">Nikol, Ahmedabad</p>
-                    <p className="text-[#8c92ac] text-[10px] uppercase tracking-widest mt-0.5">Gujarat, India</p>
+                    <p className="text-[#a8b4cc] text-[10px] uppercase tracking-widest mt-0.5">Gujarat, India</p>
                   </div>
                 </div>
                 <a

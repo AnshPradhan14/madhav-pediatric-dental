@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=2000" />
       </head>
       <body className={`${playfair.variable} ${inter.variable} antialiased font-sans bg-canvas text-sterling`}>
         <PublicShell>{children}</PublicShell>

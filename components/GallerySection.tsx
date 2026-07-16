@@ -33,9 +33,9 @@ export default function GallerySection() {
                         Facility Tour
                     </div>
                     <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl font-display text-white">
-                        Inside <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">The Clinic</span>
+                        Inside <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#a8b4cc]">The Clinic</span>
                     </h2>
-                    <p className="mt-4 text-[#8c92ac] font-light max-w-xl mx-auto tracking-wide">Take a virtual tour of our state-of-the-art facility designed for absolute clinical excellence and comfort.</p>
+                    <p className="mt-4 text-[#a8b4cc] font-light max-w-xl mx-auto tracking-wide">Take a virtual tour of our state-of-the-art facility designed for absolute clinical excellence and comfort.</p>
                 </motion.div>
 
                 {loading ? (
@@ -48,7 +48,7 @@ export default function GallerySection() {
                     <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>div:not(:first-child)]:mt-4">
                         {images.length === 0 ? (
                             <div className="col-span-full w-full py-16 flex items-center justify-center glass-card rounded-[2rem] border border-[rgba(255,255,255,0.05)]">
-                                <p className="text-center text-[#8c92ac] font-light text-sm tracking-widest uppercase">Initializing visual data...</p>
+                                <p className="text-center text-[#a8b4cc] font-light text-sm tracking-widest uppercase">Initializing visual data...</p>
                             </div>
                         ) : (
                             images.map((img) => (
@@ -116,7 +116,7 @@ export default function GallerySection() {
                             />
                             {selectedImage.caption && (
                                 <div className="absolute -bottom-16 left-0 right-0 text-center">
-                                    <p className="text-sm tracking-[0.2em] font-light uppercase text-[#8c92ac] font-display">{selectedImage.caption}</p>
+                                    <p className="text-sm tracking-[0.2em] font-light uppercase text-[#a8b4cc] font-display">{selectedImage.caption}</p>
                                 </div>
                             )}
                         </motion.div>

@@ -84,7 +84,7 @@ export default function Navbar() {
                                 : 'sticky top-0 border-b border-[rgba(255,255,255,0.05)]'
                         }`}
                     >
-                        <div className={`transition-all duration-500 ${
+                        <div className={`transition-all duration-500 transform-gpu ${
                             isFloating
                                 ? 'rounded-full border border-[rgba(255,255,255,0.12)] bg-[rgba(13,23,38,0.85)] backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.5),0_0_0_0.5px_rgba(255,255,255,0.05)] px-4 py-2.5'
                                 : 'bg-[rgba(13,23,38,0.7)] backdrop-blur-xl px-6 py-4'
@@ -97,7 +97,7 @@ export default function Navbar() {
                                     </div>
                                     <div className="flex gap-1.5">
                                         <span className="text-xl font-extrabold font-display text-white tracking-tight group-hover:text-secondary transition-colors">Madhav</span>
-                                        <span className={`text-xl font-extrabold font-display tracking-tight ${isFloating ? 'hidden sm:inline text-[#8c92ac]' : 'text-[#8c92ac]'}`}>Dental</span>
+                                        <span className={`text-xl font-extrabold font-display tracking-tight ${isFloating ? 'hidden sm:inline text-[#a8b4cc]' : 'text-[#a8b4cc]'}`}>Dental</span>
                                     </div>
                                 </Link>
 
@@ -107,7 +107,7 @@ export default function Navbar() {
                                         <Link
                                             key={link.href}
                                             href={link.href}
-                                            className={`relative text-[13px] font-medium tracking-wider transition-all hover:text-[#eaeaea] group ${pathname === link.href ? 'text-[#eaeaea]' : 'text-[#8c92ac]'}`}
+                                            className={`relative text-[13px] font-medium tracking-wider transition-all hover:text-[#eaeaea] group ${pathname === link.href ? 'text-[#eaeaea]' : 'text-[#a8b4cc]'}`}
                                         >
                                             {link.name}
                                             <span className={`absolute -bottom-1 left-0 h-[2px] bg-secondary transition-all duration-300 shadow-[0_0_8px_rgba(100,255,218,0.6)] ${pathname === link.href ? 'w-full' : 'w-0 group-hover:w-full'}`} />
@@ -124,7 +124,7 @@ export default function Navbar() {
                                 {/* Mobile Toggle */}
                                 <button
                                     onClick={() => setIsOpen(!isOpen)}
-                                    className="lg:hidden h-9 w-9 flex items-center justify-center rounded-xl bg-white/5 text-white border border-[rgba(255,255,255,0.1)] active:scale-95 transition-all focus:outline-none"
+                                    className="lg:hidden h-9 w-9 flex items-center justify-center rounded-xl bg-white/5 text-white border border-[rgba(255,255,255,0.1)] active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-secondary/50"
                                     aria-label="Toggle navigation menu"
                                 >
                                     <span className="material-symbols-outlined text-[20px]">{isOpen ? 'close' : 'menu'}</span>
@@ -153,7 +153,7 @@ export default function Navbar() {
             <div className={`fixed inset-y-0 right-0 z-50 w-full max-w-sm border-l border-[rgba(255,255,255,0.05)] bg-[#121212]/95 backdrop-blur-3xl transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] lg:hidden transform ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                 <div className="flex flex-col h-full p-8">
                     <div className="flex items-center justify-between mb-12">
-                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#8c92ac]">Navigation</span>
+                        <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#a8b4cc]">Navigation</span>
                         <button onClick={() => setIsOpen(false)} className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 text-white border border-[rgba(255,255,255,0.1)] active:scale-95 transition-all" aria-label="Close menu">
                             <span className="material-symbols-outlined text-xl font-extralight">close</span>
                         </button>
@@ -163,10 +163,10 @@ export default function Navbar() {
                             <Link
                                 key={link.href}
                                 href={link.href}
-                                className={`flex items-center justify-between p-4 rounded-xl text-lg font-display font-semibold transition-all ${pathname === link.href ? 'bg-secondary/10 text-white border border-secondary/30' : 'text-[#8c92ac] hover:bg-white/5 hover:text-white'}`}
+                                className={`flex items-center justify-between p-4 rounded-xl text-lg font-display font-semibold transition-all ${pathname === link.href ? 'bg-secondary/10 text-white border border-secondary/30' : 'text-[#a8b4cc] hover:bg-white/5 hover:text-white'}`}
                             >
                                 {link.name}
-                                <span className={`material-symbols-outlined text-[18px] font-extralight ${pathname === link.href ? 'text-secondary' : 'text-[#8c92ac]/50'}`}>north_east</span>
+                                <span className={`material-symbols-outlined text-[18px] font-extralight ${pathname === link.href ? 'text-secondary' : 'text-[#a8b4cc]/50'}`}>north_east</span>
                             </Link>
                         ))}
                     </nav>

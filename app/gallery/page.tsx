@@ -63,14 +63,14 @@ export default function GalleryPage() {
                     variants={fadeInUp}
                     className="mb-16 text-center md:text-left"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">visibility</span>
                         Visual Portfolio
                     </div>
                     <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 font-display leading-tight">
-                        Clinical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Excellence</span> Revealed
+                        Clinical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#a8b4cc]">Excellence</span> Revealed
                     </h1>
-                    <p className="text-[#8c92ac] text-lg font-light tracking-wide leading-relaxed max-w-2xl">
+                    <p className="text-[#a8b4cc] text-lg font-light tracking-wide leading-relaxed max-w-2xl">
                         A cinematic perspective into our high-tech infrastructure and the precision-driven environment where dental transformations occur.
                     </p>
                 </motion.div>
@@ -78,7 +78,7 @@ export default function GalleryPage() {
                 {/* Gallery Filter (Simplified UI for Premium Feel) */}
                 <div className="flex flex-wrap gap-4 mb-12">
                     {["All Archives", "Interior Design", "Clinical Suite", "Technology"].map((filter, i) => (
-                        <button key={i} className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? "bg-primary text-white shadow-[0_5px_15px_rgba(77,97,252,0.3)]" : "glass-card text-[#8c92ac] hover:text-white"}`}>
+                        <button key={i} className={`px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${i === 0 ? "bg-secondary text-[#051525] shadow-[0_0_20px_rgba(100,255,218,0.3)]" : "border border-white/10 bg-[#121212]/50 text-[#a8b4cc] hover:text-white hover:border-secondary/50"}`}>
                             {filter}
                         </button>
                     ))}
@@ -86,38 +86,48 @@ export default function GalleryPage() {
 
                 {/* Gallery Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {galleryItems.map((item, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: i * 0.05 }}
-                            className="group relative h-[450px] rounded-[2.5rem] overflow-hidden glass-card border border-white/5 cursor-pointer"
-                        >
-                            <img 
-                                src={item.img} 
-                                alt={item.title} 
-                                className="h-full w-full object-cover grayscale-[0.2] transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0" 
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
-                            
-                            <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="inline-block px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-[8px] font-bold uppercase tracking-[0.2em] text-primary mb-3">
-                                    {item.category}
-                                </span>
-                                <h3 className="text-xl font-bold text-white font-display">{item.title}</h3>
-                                <p className="text-[#8c92ac] text-[10px] mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 uppercase tracking-widest">
-                                    Madhav Clinical Registry
-                                </p>
-                            </div>
+                    {galleryItems.map((item, i) => {
+                        const isTeal = i % 2 === 0;
+                        const glowColor = isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
+                        const borderColor = isTeal ? 'rgba(100,255,218,0.3)' : 'rgba(77,97,252,0.3)';
+                        const textColor = isTeal ? 'text-secondary' : 'text-primary';
+                        const badgeBg = isTeal ? 'bg-secondary/20' : 'bg-primary/20';
+                        
+                        return (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.05 }}
+                                className="group relative h-[450px] rounded-[2.5rem] overflow-hidden border border-white/8 cursor-pointer hover:-translate-y-2 transition-all duration-500 ease-out transform-gpu shadow-lg hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                                style={{ background: 'rgba(13,23,38,0.7)' }}
+                            >
+                                <img 
+                                    src={item.img} 
+                                    alt={item.title} 
+                                    className="h-full w-full object-cover grayscale-[0.2] transition-all duration-700 ease-out transform-gpu group-hover:scale-110 group-hover:grayscale-0" 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#051525] via-[#051525]/40 to-transparent transition-opacity duration-500 opacity-80 group-hover:opacity-90" />
+                                
+                                <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                    <span className={`inline-block px-3 py-1 rounded-full ${badgeBg} border ${textColor} text-[8px] font-bold uppercase tracking-[0.2em] mb-3`} style={{ borderColor: borderColor }}>
+                                        {item.category}
+                                    </span>
+                                    <h3 className="text-xl font-bold text-white font-display group-hover:text-white transition-colors">{item.title}</h3>
+                                    <p className="text-[#a8b4cc] text-[10px] mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 uppercase tracking-widest">
+                                        Madhav Clinical Registry
+                                    </p>
+                                </div>
 
-                            {/* Corner Accent */}
-                            <div className="absolute top-6 right-6 h-10 w-10 glass-card rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 border border-white/10">
-                                <span className="material-symbols-outlined text-white font-extralight text-lg">fullscreen</span>
-                            </div>
-                        </motion.div>
-                    ))}
+                                {/* Corner Accent */}
+                                <div className={`absolute top-6 right-6 h-10 w-10 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-x-4 group-hover:translate-x-0 border ${textColor}`}
+                                     style={{ background: `linear-gradient(to bottom right, ${glowColor}, transparent)`, borderColor: borderColor, boxShadow: `0 0 15px ${glowColor}` }}>
+                                    <span className="material-symbols-outlined font-light text-lg">fullscreen</span>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* Elite Registry Section */}
@@ -133,7 +143,7 @@ export default function GalleryPage() {
                         <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 font-display leading-tight">
                             Experience the <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-primary">Future of Clinical Care</span>
                         </h2>
-                        <p className="text-[#8c92ac] text-lg font-light leading-relaxed mb-12">
+                        <p className="text-[#a8b4cc] text-lg font-light leading-relaxed mb-12">
                             Join the elite circle of patients who prioritize biometric precision and high-aesthetic dental architecture.
                         </p>
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

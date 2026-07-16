@@ -35,7 +35,9 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-luminosity"
-          style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=2000")' }}
+          style={{ backgroundImage: 'url("/images/modern-equipment.png")' }}
+          role="img"
+          aria-label="Modern dental clinic equipment"
         />
         {/* Soft studio lighting radial gradients */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(4,12,24,0.3)_0%,rgba(4,12,24,1)_100%)]" />
@@ -77,7 +79,7 @@ export default function HeroSection() {
         {/* Subheadline */}
         <motion.p
           variants={fadeUp}
-          className="max-w-[520px] text-lg font-light text-[#8c92ac] tracking-wide leading-relaxed mb-10"
+          className="max-w-[520px] text-lg font-light text-[#a8b4cc] tracking-wide leading-relaxed mb-10"
         >
           Specialist care in dental implants, maxillofacial surgery, and smile transformation — delivered with technology and compassion.
         </motion.p>
@@ -95,13 +97,13 @@ export default function HeroSection() {
             </Link>
           </motion.div>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-            <a
-              href="#services"
+            <Link
+              href="/treatments"
               className="inline-flex items-center justify-center gap-3 rounded-full border border-[rgba(255,255,255,0.2)] bg-[rgba(26,54,93,0.2)] backdrop-blur-md px-8 py-4 text-sm font-semibold tracking-wider text-[#d6e3ff] hover:border-secondary hover:bg-secondary/10 transition-all"
             >
               <span className="material-symbols-outlined text-[18px] font-extralight">biotech</span>
               Explore Services
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -131,7 +133,7 @@ export default function HeroSection() {
         transition={{ delay: 1.5 }}
       >
         <div className="animate-bounce-chevron">
-          <span className="material-symbols-outlined text-[#8c92ac]/60 text-[28px]">expand_more</span>
+          <span className="material-symbols-outlined text-[#a8b4cc]/60 text-[28px]">expand_more</span>
         </div>
       </motion.div>
     </section>

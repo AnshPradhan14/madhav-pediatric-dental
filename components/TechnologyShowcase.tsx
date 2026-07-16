@@ -112,7 +112,7 @@ export default function TechnologySection() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-white font-display text-sm mb-0.5 truncate">{tech.title}</h4>
-                    <p className="text-xs text-[#86a0cd] font-light truncate">{tech.description}</p>
+                    <p className="text-xs text-[#86a0cd] font-light line-clamp-2">{tech.description}</p>
                   </div>
                   <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-secondary/70 bg-secondary/10 border border-secondary/20 px-2.5 py-1 rounded-full group-hover:text-secondary group-hover:bg-secondary/15 transition-colors">
                     {tech.detail}

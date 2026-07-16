@@ -26,14 +26,12 @@ export default function BeforeAfterSection() {
 
   const handlePointerDown = (e: React.PointerEvent) => {
     setIsDragging(true);
-    // @ts-ignore
-    e.target.setPointerCapture(e.pointerId);
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
 
   const handlePointerUp = (e: React.PointerEvent) => {
     setIsDragging(false);
-    // @ts-ignore
-    e.target.releasePointerCapture(e.pointerId);
+    (e.target as HTMLElement).releasePointerCapture(e.pointerId);
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
@@ -47,6 +45,7 @@ export default function BeforeAfterSection() {
 
   // Convert motion value to clip path for the "after" image
   const clipPath = useTransform(sliderPosition, (val) => `inset(0 ${100 - val}% 0 0)`);
+  const handleLeft = useTransform(sliderPosition, val => `${val}%`);
 
   return (
     <section className="py-24 sm:py-32 relative z-10 w-full overflow-hidden bg-canvas">
@@ -76,8 +75,9 @@ export default function BeforeAfterSection() {
             {/* Before Image (Background) */}
             <div className="absolute inset-0">
               <img 
-                src="https://images.unsplash.com/photo-1590623253503-455b5fbaea01?w=1200&q=80" 
+                src="/images/dental-before.png" 
                 alt="Before treatment" 
+                loading="lazy"
                 className="w-full h-full object-cover grayscale-[30%] opacity-90"
                 draggable={false}
               />
@@ -92,8 +92,9 @@ export default function BeforeAfterSection() {
               style={{ clipPath }}
             >
               <img 
-                src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&q=80" 
+                src="/images/dental-after.png" 
                 alt="After treatment" 
+                loading="lazy"
                 className="w-full h-full object-cover brightness-110 contrast-110"
                 draggable={false}
               />
@@ -105,17 +106,13 @@ export default function BeforeAfterSection() {
             {/* Slider Handle */}
             <motion.div 
               className="absolute top-0 bottom-0 z-20 w-1 bg-secondary shadow-[0_0_10px_rgba(100,255,218,0.5)]"
-              style={{ left: useTransform(sliderPosition, val => `${val}%`), translateX: "-50%" }}
+              style={{ left: handleLeft, translateX: "-50%" }}
             >
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-[#051525] flex items-center justify-center shadow-[0_0_20px_rgba(100,255,218,0.5)]">
                 <span className="material-symbols-outlined text-[20px]">swap_horiz</span>
               </div>
             </motion.div>
           </div>
-          
-          <p className="text-center mt-6 text-sm text-[#8c92ac] font-light">
-            * Actual patient result. Full mouth reconstruction with porcelain veneers and soft tissue contouring.
-          </p>
         </div>
       </div>
     </section>

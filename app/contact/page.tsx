@@ -62,14 +62,14 @@ export default function ContactPage() {
                     variants={fadeInUp}
                     className="mb-16 text-center max-w-2xl mx-auto"
                 >
-                    <div className="inline-flex items-center gap-2 rounded-full glass-card px-3 py-1 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-secondary/10 backdrop-blur-xl border border-secondary/20 px-4 py-1.5 mb-6 text-[10px] font-semibold uppercase tracking-[0.2em] text-secondary shadow-[0_0_20px_rgba(100,255,218,0.15)]">
                         <span className="material-symbols-outlined text-[12px]">contact_support</span>
                         Direct Access
                     </div>
                     <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 font-display leading-tight">
-                        Secure Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#8c92ac]">Clinical Slot</span>
+                        Secure Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-[#a8b4cc]">Clinical Slot</span>
                     </h1>
-                    <p className="text-[#8c92ac] text-lg font-light tracking-wide leading-relaxed">
+                    <p className="text-[#a8b4cc] text-lg font-light tracking-wide leading-relaxed">
                         Whether scheduling a specialized procedure or requesting a consultation, our concierge team is ready to assist.
                     </p>
                 </motion.div>
@@ -86,14 +86,14 @@ export default function ContactPage() {
                         <div className="flex bg-[#121212]/60 p-2 rounded-2xl mb-10 border border-white/5 shadow-inner">
                             <button
                                 onClick={() => setMode("appointment")}
-                                className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${mode === "appointment" ? "bg-primary text-white shadow-[0_0_20px_rgba(77,97,252,0.4)]" : "text-[#8c92ac] hover:text-white"}`}
+                                className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${mode === "appointment" ? "bg-primary text-white shadow-[0_0_20px_rgba(77,97,252,0.4)]" : "text-[#a8b4cc] hover:text-white"}`}
                             >
                                 <span className="material-symbols-outlined text-lg font-extralight">calendar_today</span>
                                 Appointment
                             </button>
                             <button
                                 onClick={() => setMode("message")}
-                                className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${mode === "message" ? "bg-primary text-white shadow-[0_0_20px_rgba(77,97,252,0.4)]" : "text-[#8c92ac] hover:text-white"}`}
+                                className={`flex-1 py-3 px-4 rounded-xl text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 ${mode === "message" ? "bg-primary text-white shadow-[0_0_20px_rgba(77,97,252,0.4)]" : "text-[#a8b4cc] hover:text-white"}`}
                             >
                                 <span className="material-symbols-outlined text-lg font-extralight">chat</span>
                                 Request Info
@@ -127,12 +127,12 @@ export default function ContactPage() {
                         <form onSubmit={handleSubmit} className="space-y-8">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-3">
-                                    <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">Identity *</label>
+                                    <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">Full Name *</label>
                                     <input id="name" required value={form.name} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light" placeholder="Full Name" type="text" />
                                 </div>
                                 <div className="space-y-3">
-                                    <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">Contact String *</label>
-                                    <input id="phone" required value={form.phone} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light" placeholder="+91 00000 00000" type="tel" />
+                                    <label htmlFor="phone" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">Phone Number *</label>
+                                    <input id="phone" required pattern="^(?:\+?91[\-\s]?)?[6-9](?:[\-\s]?\d){9}$" title="Please enter a valid 10-digit Indian mobile number." value={form.phone} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500/50" placeholder="e.g. 9876543210" type="tel" />
                                 </div>
                             </div>
 
@@ -143,7 +143,7 @@ export default function ContactPage() {
                                     className="grid md:grid-cols-2 gap-6"
                                 >
                                     <div className="space-y-3">
-                                        <label htmlFor="treatment" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">Clinical Protocol</label>
+                                        <label htmlFor="treatment" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">Select Treatment</label>
                                         <select id="treatment" value={form.treatment} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light appearance-none">
                                             <option className="bg-[#121212]">Routine Checkup</option>
                                             <option className="bg-[#121212]">Dental Cleaning</option>
@@ -155,20 +155,20 @@ export default function ContactPage() {
                                         </select>
                                     </div>
                                     <div className="space-y-3">
-                                        <label htmlFor="preferred_date" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">Preferred Slot *</label>
+                                        <label htmlFor="preferred_date" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">Preferred Slot *</label>
                                         <input id="preferred_date" required value={form.preferred_date} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light [color-scheme:dark]" type="date" />
                                     </div>
                                 </motion.div>
                             )}
 
                             <div className="space-y-3">
-                                <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">Digital Mail</label>
-                                <input id="email" value={form.email} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light" placeholder="example@clinical.com" type="email" />
+                                <label htmlFor="email" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">Email Address</label>
+                                <input id="email" value={form.email} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light" placeholder="example@email.com" type="email" />
                             </div>
 
                             <div className="space-y-3">
-                                <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8c92ac] ml-1">{mode === "appointment" ? "Special Concerns (Optional)" : "How can we assist? *"}</label>
-                                <textarea id="message" required={mode === "message"} value={form.message} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light resize-none" placeholder={mode === "appointment" ? "Any specific medical history or concerns?" : "Describe your clinical inquiry..."} rows={4}></textarea>
+                                <label htmlFor="message" className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#a8b4cc] ml-1">{mode === "appointment" ? "Any Specific Concerns? (Optional)" : "How can we assist? *"}</label>
+                                <textarea id="message" required={mode === "message"} value={form.message} onChange={handleChange} className="w-full px-6 py-4 rounded-2xl border border-white/5 bg-[#121212]/40 text-white placeholder-white/20 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all duration-300 font-light resize-none" placeholder={mode === "appointment" ? "Any specific medical history or concerns?" : "Describe your inquiry..."} rows={4}></textarea>
                             </div>
 
                             <button disabled={loading} className="w-full bg-primary text-white py-5 rounded-[2rem] text-sm font-bold uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(77,97,252,0.4)] hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-50" type="submit">
@@ -176,7 +176,7 @@ export default function ContactPage() {
                                     <span className="material-symbols-outlined animate-spin font-extralight text-2xl">progress_activity</span>
                                 ) : (
                                     <>
-                                        {mode === "appointment" ? "Initialize Booking" : "Send Digital Transmission"}
+                                        {mode === "appointment" ? "Book Appointment" : "Send Message"}
                                         <span className="material-symbols-outlined text-lg font-extralight">arrow_forward</span>
                                     </>
                                 )}
@@ -191,42 +191,44 @@ export default function ContactPage() {
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="glass-card border border-white/5 rounded-[2.5rem] p-10 bg-black/20 shadow-xl"
+                            className="relative border border-white/8 rounded-[2.5rem] p-10 shadow-xl overflow-hidden group cursor-default"
+                            style={{ background: 'rgba(13,23,38,0.7)', backdropFilter: 'blur(12px)' }}
                         >
-                            <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary mb-8 flex items-center gap-2">
-                                <span className="w-8 h-px bg-primary/30" />
-                                Regional Hub
-                            </h3>
-                            <div className="space-y-8">
-                                <div className="flex items-start gap-6 group">
-                                    <div className="h-12 w-12 rounded-xl glass-card flex items-center justify-center border border-white/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-lg">
-                                        <span className="material-symbols-outlined font-extralight">call</span>
-                                    </div>
-                                    <div>
-                                        <p className="text-[8px] font-bold text-white/40 uppercase tracking-widest mb-1 font-display">Audio Contact</p>
-                                        <p className="text-xl font-bold text-white tracking-wide">{settings?.phone || "+91 88723 00851"}</p>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-6 group">
-                                    <div className="h-12 w-12 rounded-xl glass-card flex items-center justify-center border border-white/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-lg">
-                                        <span className="material-symbols-outlined font-extralight">location_on</span>
-                                    </div>
-                                    <div>
-                                        <p className="text-[8px] font-bold text-white/40 uppercase tracking-widest mb-1 font-display">Facility Grid</p>
-                                        <p className="text-lg font-bold text-white leading-relaxed">{settings?.address || "T-11, 3rd Floor, Raspan Arcade, Nikol, Ahmedabad."}</p>
-                                    </div>
-                                </div>
-                                {settings?.email && (
-                                    <div className="flex items-start gap-6 group">
-                                        <div className="h-12 w-12 rounded-xl glass-card flex items-center justify-center border border-white/5 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-lg">
-                                            <span className="material-symbols-outlined font-extralight">mail</span>
+                            {/* Gradient top accent line */}
+                            <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-secondary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            
+                            {/* Background glow */}
+                            <div className="absolute top-0 right-0 w-40 h-40 blur-3xl pointer-events-none transition-opacity duration-500 opacity-0 group-hover:opacity-100 rounded-full"
+                                 style={{ background: 'rgba(100,255,218,0.15)' }} />
+
+                            <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-secondary mb-8 flex items-center gap-2">
+                                <span className="w-8 h-px bg-secondary/30" />
+                                Contact Information
+                            </h2>
+                            <div className="space-y-8 relative z-10">
+                                {[
+                                    { label: 'Phone', text: settings?.phone || "+91 88723 00851", icon: 'call', isTeal: true, conditional: true },
+                                    { label: 'Address', text: settings?.address || "T-11, 3rd Floor, Raspan Arcade, Nikol, Ahmedabad.", icon: 'location_on', isTeal: false, conditional: true },
+                                    { label: 'Email', text: settings?.email, icon: 'mail', isTeal: true, conditional: !!settings?.email }
+                                ].map((info, i) => {
+                                    if (!info.conditional) return null;
+                                    const glowColor = info.isTeal ? 'rgba(100,255,218,0.15)' : 'rgba(77,97,252,0.15)';
+                                    const borderColor = info.isTeal ? 'rgba(100,255,218,0.2)' : 'rgba(77,97,252,0.2)';
+                                    const textColor = info.isTeal ? 'text-secondary' : 'text-primary';
+
+                                    return (
+                                        <div key={i} className="flex items-start gap-6 group/item">
+                                            <div className={`h-12 w-12 rounded-xl flex items-center justify-center border transition-all duration-500 group-hover/item:scale-110 shadow-lg ${textColor}`}
+                                                 style={{ background: `linear-gradient(to bottom right, ${glowColor}, transparent)`, borderColor: borderColor, boxShadow: `0 0 15px ${glowColor}` }}>
+                                                <span className="material-symbols-outlined font-light">{info.icon}</span>
+                                            </div>
+                                            <div className="flex-1">
+                                                <p className="text-[8px] font-bold text-white/40 uppercase tracking-widest mb-1 font-display">{info.label}</p>
+                                                <p className="text-lg font-bold text-white tracking-wide group-hover/item:text-white/90 transition-colors break-words">{info.text}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p className="text-[8px] font-bold text-white/40 uppercase tracking-widest mb-1 font-display">Digital Gateway</p>
-                                            <p className="text-lg font-bold text-white">{settings.email}</p>
-                                        </div>
-                                    </div>
-                                )}
+                                    );
+                                })}
                             </div>
                         </motion.div>
 
@@ -239,10 +241,10 @@ export default function ContactPage() {
                             className="bg-primary shadow-[0_20px_60px_rgba(77,97,252,0.3)] text-white rounded-[2.5rem] p-10 relative overflow-hidden group"
                         >
                             <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 blur-[60px] pointer-events-none rounded-full" />
-                            <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-2">
+                            <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-2">
                                 <span className="w-8 h-px bg-white/30" />
-                                Operation Windows
-                            </h3>
+                                Clinic Hours
+                            </h2>
                             <div className="space-y-6">
                                 <div className="flex justify-between items-center border-b border-white/20 pb-4">
                                     <span className="font-light text-sm tracking-wide whitespace-pre-line leading-relaxed">{settings?.clinic_hours || "Monday to Saturday\n09:30 AM - 01:00 PM\n05:30 PM - 09:00 PM"}</span>
@@ -264,7 +266,7 @@ export default function ContactPage() {
                             transition={{ delay: 0.3 }}
                             className="h-72 rounded-[2.5rem] overflow-hidden shadow-2xl relative border border-white/5 bg-black/40 group"
                         >
-                            <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 cursor-pointer" style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAhwOcveqNDW92NxcfsJWOQQRRYXUvT43wnaDjzU_y1W3_ts8l9bHbb93DD2ULVEGnm4lPKL8SUfiwI5TIpsEq4LMlIJ-KYaIJUqJMs4GKLJNvRixvvHay25vYP2Sntxpgz8FAhAlo7hit8OGwzHf9Ogj7SVVk48J1uCbz-pHCRtqF6TIwce1NZzV8_ZfTOJjss9QIZYsMe31YCvB3BrNAtRiq62kmgLXNUDM-X_ugOfrmHz4qRYh34i4vy8Gi8Sa19g3oioIAbiM')" }}></div>
+                            <div className="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-100 transition-all duration-1000 grayscale group-hover:grayscale-0 cursor-pointer" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80')" }}></div>
                             <div className="absolute inset-0 bg-primary/20 mix-blend-overlay pointer-events-none" />
                             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div className="bg-primary text-white p-4 rounded-full shadow-[0_0_30px_rgba(77,97,252,0.6)] animate-pulse">
@@ -278,7 +280,7 @@ export default function ContactPage() {
                                     rel="noopener noreferrer"
                                     className="glass-card bg-[#121212]/80 text-white px-6 py-3 rounded-xl text-[10px] font-bold tracking-widest uppercase shadow-2xl flex items-center gap-2 hover:bg-primary transition-all active:scale-95 border border-white/10"
                                 >
-                                    <span className="material-symbols-outlined text-lg font-extralight">map</span> Satellite Launch
+                                    <span className="material-symbols-outlined text-lg font-extralight">map</span> View on Maps
                                 </a>
                             </div>
                         </motion.div>

@@ -4,7 +4,7 @@ const items = [
   "CBCT 3D Imaging",
   "Painless Procedures",
   "15+ Years Experience",
-  "ISO Certified",
+  "BDS/MDS Specialists",
   "Digital X-Ray",
   "Same-Day Emergency",
   "Laser Dentistry",
