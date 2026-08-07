@@ -1,138 +1,213 @@
-"use client";
+import type { Metadata } from 'next'
+import Image from 'next/image'
+import { HeartHandshake, Microscope, ShieldCheck, Sparkles, GraduationCap, Award, Stethoscope } from 'lucide-react'
+import { PageHero } from '@/components/page-hero'
+import { SectionHeading } from '@/components/section-heading'
+import { Reveal } from '@/components/reveal'
+import { CtaSection } from '@/components/cta-section'
 
-import { useEffect, useState } from 'react';
-import { getDoctors, Doctor } from '@/lib/api';
+export const metadata: Metadata = {
+  title: 'About Us | Madhav Dental',
+  description:
+    'Learn about Madhav Dental, a premium private dental clinic in Nikol, Ahmedabad, built around precision, comfort and patient confidence.',
+}
+
+const values = [
+  {
+    icon: HeartHandshake,
+    title: 'Patient First',
+    text: 'Every decision starts with your comfort, your goals and your peace of mind.',
+  },
+  {
+    icon: Microscope,
+    title: 'Clinical Precision',
+    text: 'Magnification, digital imaging and meticulous technique in every procedure.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Uncompromising Hygiene',
+    text: 'Hospital-grade sterilisation and single-use protocols you can trust.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Aesthetic Excellence',
+    text: 'Natural, beautiful results tailored to your unique smile and features.',
+  },
+]
+
+const doctors = [
+  {
+    name: 'Dr. Jatin S. Patel',
+    role: 'Maxillofacial Surgeon',
+    qualification: 'MDS – KGMU Lucknow',
+    experience: '10+ Years Experience',
+    image: '/images/dr-jatin-patel.png',
+    bio: 'Expert in dental implants, jaw reconstruction, and oral oncology with over a decade of clinical experience providing meticulous surgical outcomes.',
+    specialties: ['Dental Implants', 'Jaw Reconstruction', 'Oral Oncology'],
+  },
+  {
+    name: 'Dr. Poonam J. Patel',
+    role: 'Pediatric Dentist Specialist',
+    qualification: 'MDS – Pediatric Dentistry',
+    experience: '10+ Years Experience',
+    image: '/images/dr-poonam-patel.png',
+    bio: 'Specialist in gentle, compassionate dental care for infants, children, and teens, dedicated to making every dental visit playful and stress-free.',
+    specialties: ['Pediatric Dentistry', 'Preventative Care', 'Child Psychology'],
+  },
+]
 
 export default function AboutPage() {
-    const [doctors, setDoctors] = useState<Doctor[]>([]);
-    const [loading, setLoading] = useState(true);
+  return (
+    <main>
+      <PageHero
+        breadcrumb="About"
+        eyebrow="About Madhav Dental"
+        title="Dentistry designed around you."
+        description="A high-end private clinic in Ahmedabad where advanced technology, gentle expertise and genuine warmth come together."
+      />
 
-    useEffect(() => {
-        getDoctors()
-            .then(setDoctors)
-            .catch(err => console.error("Failed to load doctors:", err))
-            .finally(() => setLoading(false));
-    }, []);
+      {/* Our Story */}
+      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+          <Reveal className="relative order-last lg:order-first">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src="/images/dentist.png"
+                alt="Lead dentist at Madhav Dental"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+          <div>
+            <SectionHeading
+              eyebrow="Our Story"
+              title="A calmer, more considered kind of dental care."
+              description="Madhav Dental was founded on a simple belief: exceptional dentistry should never feel clinical or rushed. We set out to build a space that feels more like a private retreat than a hospital."
+            />
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/80">
+              <p>
+                From our home in Nikol, Ahmedabad, we bring together
+                internationally trained specialists, modern technology and a
+                deeply personal approach. Whether you are visiting for a routine
+                check-up or a complete smile transformation, you receive the same
+                meticulous attention to detail.
+              </p>
+              <p>
+                We take the time to listen, explain every option clearly, and
+                design a treatment plan built entirely around you — no pressure,
+                no surprises, just honest care.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    return (
-        <>
-            {/* Hero Section */}
-            <section className="px-4 md:px-10 lg:px-40 py-8">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden rounded-xl bg-slate-200">
-                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 50%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBOrZ_DJgUjM6y9dlcTMF7W3a5gYuSuUAekbafe8l695upxMnGnrJb40iTSSaZsx9hzyaEx_wa0xmqyT3NaQXRCz8ym6ItQYqsxt1msA1gJ0OAJmHVmuXiC6BUAnEzvXLvrEvzs2oDguwwvLXud-oIc7YxQV4cuWwSze79vAgUDrb1YyVtoHZm977WtTpa5szUTIyf_pDBbIE11k0e7wZgr4fAmXjj9vQ3jXPiD1L6QTvtTlMEalb6FgDak2qo7qabyl5qOmZhl1V0")' }}></div>
-                        <div className="absolute bottom-0 left-0 p-8 md:p-12">
-                            <h2 className="text-white text-4xl md:text-5xl font-extrabold mb-2">Dedicated to Excellence</h2>
-                            <p className="text-white/90 text-lg max-w-xl">Redefining pediatric dental care and surgical precision in a comforting environment.</p>
-                        </div>
+      {/* Meet Our Doctors */}
+      <section className="bg-secondary/40 py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Specialist Care"
+            title="Meet Our Lead Doctors"
+            description="Our clinic is led by board-certified MDS specialists who bring decades of combined clinical excellence and compassionate patient care."
+          />
+
+          <div className="mt-16 grid gap-10 lg:grid-cols-2">
+            {doctors.map((doc, idx) => (
+              <Reveal key={doc.name} delay={idx * 150}>
+                <div className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl sm:flex-row">
+                  <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden sm:w-64">
+                    <Image
+                      src={doc.image}
+                      alt={doc.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 256px"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent sm:hidden" />
+                  </div>
+
+                  <div className="flex flex-col justify-between p-7 sm:p-8">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                          <Stethoscope className="size-3.5" />
+                          {doc.role}
+                        </span>
+                        <span className="inline-flex items-center gap-1 rounded-full bg-accent/20 px-3 py-1 text-xs font-medium text-foreground">
+                          <Award className="size-3.5" />
+                          {doc.experience}
+                        </span>
+                      </div>
+
+                      <h3 className="mt-4 font-serif text-2xl font-bold tracking-tight text-foreground">
+                        {doc.name}
+                      </h3>
+
+                      <p className="mt-1 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                        <GraduationCap className="size-4 text-primary" />
+                        {doc.qualification}
+                      </p>
+
+                      <p className="mt-4 text-sm leading-relaxed text-foreground/80">
+                        {doc.bio}
+                      </p>
                     </div>
-                </div>
-            </section>
 
-            {/* Clinic Introduction */}
-            <section className="px-4 md:px-10 lg:px-40 py-12 bg-white">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="flex flex-col md:flex-row gap-12 items-center">
-                        <div className="flex-1">
-                            <span className="text-primary font-bold tracking-widest uppercase text-xs">Our Mission</span>
-                            <h2 className="text-3xl font-bold mt-2 mb-6">Advanced Care for Every Smile</h2>
-                            <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                                At Madhav Pediatric Dental Care, our mission is to provide specialized dental care for children and advanced surgical treatments for all. We combine a child-friendly environment with state-of-the-art technology to ensure the best outcomes for our young patients and complex surgical cases.
-                            </p>
-                            <p className="text-slate-600 text-lg leading-relaxed">
-                                We believe that oral health is a vital component of overall well-being. Our team is dedicated to educating families while providing painless, effective treatments that set the foundation for a lifetime of healthy smiles.
-                            </p>
-                        </div>
-                        <div className="flex-1 grid grid-cols-2 gap-4">
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">child_care</span>
-                                <h3 className="font-bold">Pediatric Focus</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">precision_manufacturing</span>
-                                <h3 className="font-bold">Advanced Tech</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">health_and_safety</span>
-                                <h3 className="font-bold">Surgical Safety</h3>
-                            </div>
-                            <div className="bg-primary/5 p-6 rounded-xl flex flex-col items-center text-center">
-                                <span className="material-symbols-outlined text-primary text-4xl mb-3">volunteer_activism</span>
-                                <h3 className="font-bold">Patient Care</h3>
-                            </div>
-                        </div>
+                    <div className="mt-6 border-t border-border/60 pt-4">
+                      <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                        Areas of Expertise
+                      </span>
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {doc.specialties.map((spec) => (
+                          <span
+                            key={spec}
+                            className="rounded-md bg-secondary px-2.5 py-1 text-xs font-medium text-foreground/80"
+                          >
+                            {spec}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </section>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Doctor Profiles */}
-            <section className="px-4 md:px-10 lg:px-40 py-16">
-                <div className="max-w-[1200px] mx-auto text-center mb-12">
-                    <h2 className="text-3xl font-bold">Meet Our Specialists</h2>
-                    <p className="text-slate-500 mt-2">World-class expertise in pediatric and maxillofacial care</p>
+      {/* Values */}
+      <section className="py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <SectionHeading
+            align="center"
+            eyebrow="Our Values"
+            title="The principles behind every visit."
+          />
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((v, i) => (
+              <Reveal key={v.title} delay={i * 90}>
+                <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-8">
+                  <span className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <v.icon className="size-6" />
+                  </span>
+                  <h3 className="mt-5 font-serif text-xl font-semibold text-foreground">
+                    {v.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {v.text}
+                  </p>
                 </div>
-                <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-8">
-                    {loading ? (
-                        <div className="col-span-2 text-center py-10 text-slate-400">Loading doctors...</div>
-                    ) : (
-                        doctors.map((doc) => (
-                            <div key={doc.id} className="bg-white rounded-xl overflow-hidden shadow-lg border border-primary/5 flex flex-col md:flex-row">
-                                <div
-                                    className="md:w-1/2 aspect-[4/5] bg-cover bg-center bg-slate-100"
-                                    style={{ backgroundImage: doc.photo_url ? `url("${doc.photo_url}")` : undefined }}
-                                >
-                                    {!doc.photo_url && (
-                                        <div className="w-full h-full flex items-center justify-center">
-                                            <span className="material-symbols-outlined text-slate-300 text-6xl">person</span>
-                                        </div>
-                                    )}
-                                </div>
-                                <div className="md:w-1/2 p-6 flex flex-col justify-center">
-                                    <h3 className="text-2xl font-bold">{doc.name}</h3>
-                                    <p className="text-primary font-semibold mb-3">{doc.qualification}</p>
-                                    <p className="text-slate-700 font-bold mb-2">{doc.specialization}</p>
-                                    <p className="text-sm text-slate-600 leading-relaxed">
-                                        {doc.description}
-                                    </p>
-                                </div>
-                            </div>
-                        ))
-                    )}
-                </div>
-            </section>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            {/* Our Commitment */}
-            <section className="px-4 md:px-10 lg:px-40 py-16 bg-primary/5">
-                <div className="max-w-[1200px] mx-auto">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold mb-4">Our Commitment to Patient Care</h2>
-                        <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">verified_user</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Safety First</h4>
-                            <p className="text-slate-600">We adhere to the highest international sterilization protocols to ensure the absolute safety of every patient.</p>
-                        </div>
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">sentiment_very_satisfied</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Comfort Focused</h4>
-                            <p className="text-slate-600">From our child-friendly waiting area to sedation options, we prioritize a stress-free experience for children and adults.</p>
-                        </div>
-                        <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
-                                <span className="material-symbols-outlined text-primary">groups</span>
-                            </div>
-                            <h4 className="text-xl font-bold mb-3">Family Centric</h4>
-                            <p className="text-slate-600">We work closely with parents to create personalized long-term dental health plans for their children.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </>
-    );
+      <CtaSection />
+    </main>
+  )
 }
