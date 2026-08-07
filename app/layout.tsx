@@ -66,7 +66,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <Analytics />
       </body>
     </html>
   )
