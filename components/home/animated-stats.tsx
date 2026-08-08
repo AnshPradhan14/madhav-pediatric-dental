@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion'
+import { motion, useInView, animate } from 'framer-motion'
 
 function Counter({
   value,
@@ -14,31 +14,26 @@ function Counter({
 }) {
   const ref = useRef<HTMLSpanElement>(null)
   const inView = useInView(ref, { once: true, margin: '-50px' })
-  const motionValue = useMotionValue(0)
-  const springValue = useSpring(motionValue, {
-    damping: 60,
-    stiffness: 100,
-  })
 
   useEffect(() => {
-    if (inView) {
-      setTimeout(() => {
-        motionValue.set(value)
-      }, delay * 1000)
+    if (inView && ref.current) {
+      const controls = animate(0, value, {
+        duration: 2,
+        delay: delay,
+        ease: 'easeOut',
+        onUpdate(latest) {
+          if (ref.current) {
+            const format =
+              value % 1 !== 0
+                ? latest.toFixed(1)
+                : Intl.NumberFormat('en-US').format(Math.round(latest))
+            ref.current.textContent = `${format}${suffix}`
+          }
+        },
+      })
+      return () => controls.stop()
     }
-  }, [inView, value, motionValue, delay])
-
-  useEffect(() => {
-    springValue.on('change', (latest) => {
-      if (ref.current) {
-        // If it's a decimal like 4.9, keep 1 decimal place, else round to integer
-        const format = value % 1 !== 0 
-          ? latest.toFixed(1)
-          : Intl.NumberFormat('en-US').format(Math.round(latest))
-        ref.current.textContent = `${format}${suffix}`
-      }
-    })
-  }, [springValue, suffix, value])
+  }, [inView, value, delay, suffix])
 
   return <span ref={ref}>0{suffix}</span>
 }

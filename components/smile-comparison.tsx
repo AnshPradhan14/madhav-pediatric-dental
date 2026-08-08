@@ -70,26 +70,8 @@ export function SmileComparison() {
             handleMove(e.touches[0].clientX)
           }}
         >
-          {/* Before Image */}
+          {/* After Image (Base) */}
           <div className="absolute inset-0">
-            <Image
-              src="/images/before-smile.png"
-              alt="Smile before treatment"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 1024px"
-              priority
-            />
-            <div className="absolute top-4 left-4 rounded-full bg-black/50 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-              Before
-            </div>
-          </div>
-
-          {/* After Image */}
-          <div 
-            className="absolute inset-0 border-r-2 border-white"
-            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-          >
             <Image
               src="/images/after-smile.png"
               alt="Smile after treatment"
@@ -98,9 +80,29 @@ export function SmileComparison() {
               sizes="(max-width: 1024px) 100vw, 1024px"
               priority
             />
-            <div className="absolute top-4 right-4 rounded-full bg-primary/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
-              After
-            </div>
+          </div>
+
+          {/* Before Image (Top, clipped on right) */}
+          <div 
+            className="absolute inset-0 border-r-2 border-white"
+            style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+          >
+            <Image
+              src="/images/before-smile.png"
+              alt="Smile before treatment"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              priority
+            />
+          </div>
+
+          {/* Frosted Glass Labels */}
+          <div className="absolute top-4 left-4 z-10 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm border border-white/10 pointer-events-none shadow-sm">
+            Before
+          </div>
+          <div className="absolute top-4 right-4 z-10 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm border border-white/10 pointer-events-none shadow-sm">
+            After
           </div>
 
           {/* Slider Handle */}
