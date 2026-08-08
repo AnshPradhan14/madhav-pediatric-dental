@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Cormorant_Garamond } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { PageTransition } from '@/components/page-transition'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 import './globals.css'
 
 const inter = Inter({
@@ -64,8 +66,9 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${cormorant.variable} bg-background`}>
       <body className="font-sans antialiased">
         <SiteHeader />
-        {children}
+        <PageTransition>{children}</PageTransition>
         <SiteFooter />
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>

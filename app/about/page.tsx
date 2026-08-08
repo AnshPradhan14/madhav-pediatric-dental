@@ -5,6 +5,7 @@ import { PageHero } from '@/components/page-hero'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/reveal'
 import { CtaSection } from '@/components/cta-section'
+import { AmbientGlow } from '@/components/ambient-glow'
 
 export const metadata: Metadata = {
   title: 'About Us | Madhav Dental',
@@ -117,7 +118,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-10 lg:grid-cols-2">
             {doctors.map((doc, idx) => (
               <Reveal key={doc.name} delay={idx * 150}>
-                <div className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl sm:flex-row">
+                <div className="group flex flex-col overflow-hidden rounded-3xl glass-card transition-all duration-300 hover:shadow-xl sm:flex-row">
                   <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden sm:w-64">
                     <Image
                       src={doc.image}
@@ -180,7 +181,8 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24 lg:py-32">
+      <section className="py-24 lg:py-32 relative overflow-hidden">
+        <AmbientGlow position="center" color="accent" size="xl" className="-z-10" />
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionHeading
             align="center"
@@ -190,7 +192,7 @@ export default function AboutPage() {
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 90}>
-                <div className="flex h-full flex-col rounded-2xl border border-border bg-card p-8">
+                <div className="flex h-full flex-col rounded-2xl glass-card p-8">
                   <span className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <v.icon className="size-6" />
                   </span>

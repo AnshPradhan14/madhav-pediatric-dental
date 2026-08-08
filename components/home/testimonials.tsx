@@ -25,7 +25,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="bg-secondary/60 py-24 lg:py-32">
+    <section className="relative bg-secondary/60 py-24 lg:py-32 noise-overlay">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           align="center"
@@ -35,7 +35,7 @@ export function Testimonials() {
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 100}>
-              <figure className="flex h-full flex-col rounded-2xl border border-border bg-card p-8">
+              <figure className="flex h-full flex-col rounded-2xl glass-card p-8">
                 <Quote className="size-8 text-accent" />
                 <div className="mt-4 flex gap-0.5">
                   {Array.from({ length: 5 }).map((_, s) => (

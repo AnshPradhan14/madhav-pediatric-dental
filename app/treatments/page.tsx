@@ -14,7 +14,9 @@ import {
 import { PageHero } from '@/components/page-hero'
 import { Reveal } from '@/components/reveal'
 import { Button } from '@/components/ui/button'
+import { SmileComparison } from '@/components/smile-comparison'
 import { CtaSection } from '@/components/cta-section'
+import { FaqAccordion } from '@/components/faq-accordion'
 import { treatments } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -67,6 +69,10 @@ export default function TreatmentsPage() {
           })}
         </div>
       </section>
+
+      <SmileComparison />
+
+      <FaqAccordion />
 
       <CtaSection />
     </main>

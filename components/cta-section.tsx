@@ -4,11 +4,12 @@ import { Phone, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/reveal'
 import { clinic } from '@/lib/site'
+import { MagneticButton } from '@/components/ui/magnetic-button'
 
 export function CtaSection() {
   return (
     <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-28">
-      <Reveal className="relative overflow-hidden rounded-3xl bg-primary px-6 py-16 sm:px-12 lg:px-20 lg:py-24">
+      <Reveal className="relative overflow-hidden rounded-3xl bg-primary px-6 py-16 sm:px-12 lg:px-20 lg:py-24 noise-overlay">
         <Image
           src="/images/smile.png"
           alt=""
@@ -27,14 +28,16 @@ export function CtaSection() {
             comfort and confidence first.
           </p>
           <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-            <Button
-              render={<Link href="/contact" />}
-              size="lg"
-              className="group rounded-full bg-accent px-7 text-base text-accent-foreground hover:bg-accent/90"
-            >
-              Book Appointment
-              <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <MagneticButton>
+              <Button
+                render={<Link href="/contact" />}
+                size="lg"
+                className="group rounded-full bg-accent px-7 text-base text-accent-foreground hover:bg-accent/90"
+              >
+                Book Appointment
+                <ArrowRight className="ml-1 size-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </MagneticButton>
             <Button
               render={<a href={clinic.phoneHref} />}
               size="lg"

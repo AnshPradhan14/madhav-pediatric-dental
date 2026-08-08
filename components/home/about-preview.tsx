@@ -4,6 +4,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
+import { AmbientGlow } from '@/components/ambient-glow'
 
 const points = [
   'Internationally trained, gentle specialists',
@@ -14,7 +15,8 @@ const points = [
 
 export function AboutPreview() {
   return (
-    <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32">
+    <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-32 relative">
+      <AmbientGlow position="top-left" color="primary" size="lg" className="-z-10" />
       <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal className="relative">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">

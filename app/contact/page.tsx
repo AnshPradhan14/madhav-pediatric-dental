@@ -4,6 +4,7 @@ import { PageHero } from '@/components/page-hero'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact-form'
+import { MapIframe } from '@/components/map-iframe'
 import { clinic } from '@/lib/site'
 
 export const metadata: Metadata = {
@@ -60,7 +61,7 @@ export default function ContactPage() {
             <div className="mt-10 grid gap-5 sm:grid-cols-2">
               {details.map((d, i) => {
                 const content = (
-                  <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/30">
+                  <div className="flex h-full items-start gap-4 rounded-2xl glass-card p-6 transition-colors hover:border-primary/30">
                     <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <d.icon className="size-5" />
                     </span>
@@ -89,7 +90,7 @@ export default function ContactPage() {
             </div>
 
             <Reveal delay={120}>
-              <div className="mt-6 rounded-2xl border border-border bg-card p-6">
+              <div className="mt-6 rounded-2xl glass-card p-6">
                 <div className="flex items-center gap-3">
                   <span className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Clock className="size-5" />
@@ -122,14 +123,7 @@ export default function ContactPage() {
       </section>
 
       <section aria-label="Clinic location map" className="w-full">
-        <iframe
-          title="Madhav Dental location on Google Maps"
-          src={clinic.mapEmbed}
-          className="h-[420px] w-full border-0 grayscale-[0.2]"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
+        <MapIframe src={clinic.mapEmbed} />
       </section>
     </main>
   )

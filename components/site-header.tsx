@@ -8,6 +8,7 @@ import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { nav, clinic } from '@/lib/site'
 import { cn } from '@/lib/utils'
+import { MagneticButton } from '@/components/ui/magnetic-button'
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -95,9 +96,11 @@ export function SiteHeader() {
             <Phone className="size-4" aria-hidden="true" />
             {clinic.phone}
           </a>
-          <Button render={<Link href="/contact" />} className="rounded-full px-5">
-            Book Appointment
-          </Button>
+          <MagneticButton>
+            <Button render={<Link href="/contact" />} className="rounded-full px-5">
+              Book Appointment
+            </Button>
+          </MagneticButton>
         </div>
 
         <button

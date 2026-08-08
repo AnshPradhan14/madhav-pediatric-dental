@@ -1,6 +1,6 @@
 export const clinic = {
-  name: 'Madhav Dental',
-  tagline: 'Precision Dentistry, Personal Care',
+  name: 'Madhav Pediatric Dental Care',
+  tagline: 'Maxillofacial Surgery & Implant Center',
   address: 'T-11, 3rd Floor, Raspan Arcade, Nikol, Ahmedabad, Gujarat',
   phone: '+91 88723 00851',
   phoneHref: 'tel:+918872300851',
@@ -14,7 +14,7 @@ export const clinic = {
     { day: 'Sunday', time: 'Closed' },
   ],
   mapEmbed:
-    'https://www.google.com/maps?q=Nikol,Ahmedabad,Gujarat&output=embed',
+    'https://www.google.com/maps?q=Madhav+Pediatric+Dental+Care+-+Maxillofacial+Surgery+%26+Implant+Center,+Nikol,+Ahmedabad&output=embed',
 }
 
 export const nav = [
